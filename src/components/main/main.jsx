@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Main = (props) => {
   const {name, genre, year} = props;
   return (
-    <div className="main">
+    <>
       <div className="visually-hidden">
         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <symbol id="add" viewBox="0 0 19 20">
@@ -332,11 +332,11 @@ const Main = (props) => {
           </div>
 
           <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
+            <p>© 2020 What to watch Ltd.</p>
           </div>
         </footer>
       </div>
-    </div>
+    </>
   );
 };
 
