@@ -1,6 +1,4 @@
-import React from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-import PropTypes from "prop-types";
 import MainScreen from "../main-screen/main-screen";
 import AddReviewScreen from "../add-review-screen/add-review-screen";
 import FilmScreen from "../film-screen/film-screen";
@@ -9,25 +7,28 @@ import PlayerScreen from "../player-screen/player-screen";
 import SignInScreen from "../sign-in-screen/sign-in-screen";
 
 const App = (props) => {
-  const {name, genre, year} = props;
+  const {films} = props;
+
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <MainScreen
-            name={name}
-            genre={genre}
-            year={year}
+            films={films}
           />
         </Route>
         <Route exact path="/login">
           <SignInScreen />
         </Route>
         <Route exact path="/mylist">
-          <MyListScreen />
+          <MyListScreen films={films}/>
         </Route>
-        <Route exact path="/films/:id/review" component={AddReviewScreen} />
-        <Route path="/films/:id?" exact component={FilmScreen} />
+        <Route exact path="/films/:id/review">
+          <AddReviewScreen film={films[0]}/>
+        </Route>
+        <Route path="/films/:id?" exact>
+          <FilmScreen film={films[0]}/>
+        </Route>
         <Route exact path="/player/:id" component={PlayerScreen} />
       </Switch>
     </BrowserRouter>
@@ -35,9 +36,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  name: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired
+  films: PropTypes.array.isRequired,
 };
 
 export default App;
