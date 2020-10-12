@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import ListFilm from "../list-film/list-film";
+import {filmsType} from "../../utils/types";
 
 const MyListScreen = (props) => {
   const {films} = props;
@@ -46,8 +47,6 @@ const MyListScreen = (props) => {
   );
 };
 
-MyListScreen.propTypes = {
-  films: PropTypes.array.isRequired
-};
+MyListScreen.propTypes = filmsType;
 
 export default MyListScreen;

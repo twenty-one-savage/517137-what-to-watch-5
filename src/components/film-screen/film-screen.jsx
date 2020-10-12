@@ -175,7 +175,7 @@ FilmScreen.propTypes = {
     poll: PropTypes.number.isRequired,
     producer: PropTypes.string.isRequired,
     actors: PropTypes.array.isRequired
-  })
+  }).isRequired
 };
 
 export default FilmScreen;

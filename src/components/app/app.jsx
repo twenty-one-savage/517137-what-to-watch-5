@@ -5,6 +5,7 @@ import FilmScreen from "../film-screen/film-screen";
 import MyListScreen from "../my-list-screen/my-list-screen";
 import PlayerScreen from "../player-screen/player-screen";
 import SignInScreen from "../sign-in-screen/sign-in-screen";
+import {filmsType} from "../../utils/types";
 
 const App = (props) => {
   const {films} = props;
@@ -35,8 +36,6 @@ const App = (props) => {
   );
 };
 
-App.propTypes = {
-  films: PropTypes.array.isRequired,
-};
+App.propTypes = filmsType;
 
 export default App;

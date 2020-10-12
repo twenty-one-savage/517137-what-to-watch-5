@@ -12,12 +12,6 @@ class AddReviewScreen extends PureComponent {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this);
-    this.goBack = this.goBack.bind(this);
-  }
-
-  goBack(evt) {
-    evt.preventDefault();
-    this.context.history.goBack();
   }
 
   handleSubmit(evt) {
@@ -32,7 +26,7 @@ class AddReviewScreen extends PureComponent {
   }
 
   render() {
-    const {background, title, poster} = this.film;
+    const {id, background, title, poster} = this.film;
     return (
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">
@@ -54,7 +48,7 @@ class AddReviewScreen extends PureComponent {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="" onClick={this.goBack} className="breadcrumbs__link">{title}</a>
+                  <Link to={`/films/${id}/`} className="breadcrumbs__link">{title}</Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -111,6 +105,7 @@ class AddReviewScreen extends PureComponent {
 
 AddReviewScreen.propTypes = {
   film: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     background: PropTypes.string.isRequired
