@@ -1,8 +1,13 @@
 import {Link} from "react-router-dom";
+import {filmsType} from "../../utils/types";
 
 const FilmScreen = (props) => {
-  const {film} = props;
-  const {id, title, poster, year, storyline, genres, rating, poll, producer, actors, background} = film;
+  const {films, match} = props;
+  const filmId = match.params.id;
+
+  const currentFilm = films.find((film) => film.id === filmId);
+  const {title, poster, year, storyline, genres, rating, poll, producer, actors, background} = currentFilm;
+
   return (
       <>
         <section className="movie-card movie-card--full">
@@ -50,7 +55,7 @@ const FilmScreen = (props) => {
                     </svg>
                     <span>My list</span>
                   </button>
-                  <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
+                  <Link to={`/films/${filmId}/review`} className="btn movie-card__button">Add review</Link>
                 </div>
               </div>
             </div>
@@ -159,23 +164,6 @@ const FilmScreen = (props) => {
   );
 };
 
-FilmScreen.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    genres: PropTypes.array.isRequired,
-    background: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
-    storyline: PropTypes.string.isRequired,
-    rating: PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      tag: PropTypes.string.isRequired
-    }).isRequired,
-    poll: PropTypes.number.isRequired,
-    producer: PropTypes.string.isRequired,
-    actors: PropTypes.array.isRequired
-  }).isRequired
-};
+FilmScreen.propTypes = filmsType;
 
 export default FilmScreen;

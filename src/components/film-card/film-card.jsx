@@ -3,8 +3,9 @@ import {Link} from "react-router-dom";
 const FilmCard = (props) => {
   const {film} = props;
   const {id, poster, title} = film;
+
   return (
-    <article className="small-movie-card catalog__movies-card">
+    <article className="small-movie-card catalog__movies-card" id={id}>
       <Link to={`/films/${id}`} className="small-movie-card__image">
         <div className="small-movie-card__image">
           <img src={poster} alt={title} width="280" height="175" />

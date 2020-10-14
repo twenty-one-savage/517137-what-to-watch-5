@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 class AddReviewScreen extends PureComponent {
   constructor(props) {
     super(props);
-    this.film = props.film;
+    this.film = props;
     this.state = {
       [`review-text`]: null,
       rating: null
