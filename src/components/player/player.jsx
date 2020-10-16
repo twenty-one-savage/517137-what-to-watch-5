@@ -1,54 +1,84 @@
-import {PureComponent} from "react";
+import {PureComponent, createRef} from "react";
 class Player extends PureComponent {
   constructor(props) {
     super(props);
+    this._videoRef = createRef();
     this.state = {
       isLoading: true,
       isPlaying: props.isPlaying
     };
+    this._playVideo = this._playVideo.bind(this);
+    this._stopVideo = this._stopVideo.bind(this);
   }
 
   componentDidMount() {
-    const {src} = this.props;
-    this._video = <video src={src}/>;
-    this._video.oncanplaythrough = () => this.setState({
+    const {videoSrc, posterSrc} = this.props;
+    const video = this._videoRef.current;
+
+    video.src = videoSrc;
+    video.poster = posterSrc;
+
+    video.oncanplaythrough = () => this.setState({
       isLoading: true
     });
-    this._video.onplay = () => this.setState({
+    video.onplay = () => this.setState({
       isPlaying: true
     });
-    this._video.onpause = () => this.setState({
+    video.onpause = () => this.setState({
       isPlaying: false
     });
   }
 
   componentWillUnmount() {
-    this._video.oncanplaythrough = null;
-    this._video.onPlay = null;
-    this._video.onPause = null;
+    const video = this._videoRef.current;
+
+    video.oncanplaythrough = null;
+    video.onPlay = null;
+    video.onPause = null;
   }
 
   render() {
     return (
       <video
-        onMouseEnter={() => this.setState({
-          isPlaying: !this.state.isPlaying
-        })}
+        ref={this._videoRef}
+        onMouseOver={this._playVideo}
+        onMouseOut={this._stopVideo}
       />
     );
   }
 
   componentDidUpdate() {
+    const video = this._videoRef.current;
     if (this.state.isPlaying) {
-      this._video.play();
+      video.play();
     } else {
-      this._video.pause();
+      video.pause();
     }
+  }
+
+  _playVideo() {
+    const video = this._videoRef.current;
+    video.src = this.props.videoSrc;
+    video.muted = true;
+    setTimeout(() => {
+      this.setState({
+        isPlaying: true
+      });
+    }, 1000);
+  }
+
+  _stopVideo() {
+    const video = this._videoRef.current;
+    this.setState({
+      isPlaying: false
+    });
+    video.src = ` `;
   }
 }
 
 Player.propTypes = {
-  src: PropTypes.string.isRequired,
+  videoSrc: PropTypes.string.isRequired,
+  posterSrc: PropTypes.string,
   isPlaying: PropTypes.bool.isRequired
 };
 
