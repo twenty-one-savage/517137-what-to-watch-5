@@ -1,5 +1,5 @@
-import {Film} from "../const";
-import {generateId, getRandomInteger, getRandomArrayElement, getFewRandomArrayElements} from "../utils/common";
+import {Film} from "../consts";
+import {generateGuid, getRandomInteger, getRandomArrayElement, getFewRandomArrayElements} from "../utils/common";
 import momentRandom from "moment-random";
 
 const filmTitles = [
@@ -130,7 +130,7 @@ const generateFilmRating = () => {
 
 const generateFilm = () => {
   return {
-    id: generateId(),
+    id: generateGuid(),
     poster: getRandomArrayElement(filmPosters),
     background: getRandomArrayElement(filmBackgrounds),
     title: getRandomArrayElement(filmTitles),

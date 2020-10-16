@@ -1,6 +1,5 @@
 import {PureComponent} from "react";
 import FilmCard from "../film-card/film-card";
-import {filmsType} from "../../utils/types";
 
 class ListFilm extends PureComponent {
   constructor(props) {
@@ -22,6 +21,10 @@ class ListFilm extends PureComponent {
   }
 }
 
-ListFilm.propTypes = filmsType;
+ListFilm.propTypes = {
+  films: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired
+  })).isRequired
+};
 
 export default ListFilm;

@@ -15,8 +15,7 @@ const App = (props) => {
       <Switch>
         <Route exact path="/">
           <MainScreen
-            films={films}
-          />
+            films={films}/>
         </Route>
         <Route exact path="/login">
           <SignInScreen />
@@ -24,12 +23,14 @@ const App = (props) => {
         <Route exact path="/mylist">
           <MyListScreen films={films}/>
         </Route>
-        <Route exact path="/films/:id/review">
-          <AddReviewScreen film={films[0]}/>
-        </Route>
-        <Route path="/films/:id?" exact>
-          <FilmScreen film={films[0]}/>
-        </Route>
+        <Route exact path="/films/:id/review" component={AddReviewScreen} />
+        <Route
+          exact
+          path="/films/:id?"
+          render={(params) => (
+            <FilmScreen {...params} films={films} />
+          )}
+        />
         <Route exact path="/player/:id" component={PlayerScreen} />
       </Switch>
     </BrowserRouter>

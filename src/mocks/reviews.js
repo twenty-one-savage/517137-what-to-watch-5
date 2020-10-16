@@ -1,6 +1,6 @@
 import momentRandom from "moment-random";
-import {generateId, getRandomArrayElement} from "../utils/common";
-import {Film} from "../const";
+import {generateGuid, getRandomArrayElement} from "../utils/common";
+import {Film} from "../consts";
 
 const reviewTexts = [
   `The well-known Universal Studios film company had a plan to shoot a movie “Wanted” in 2004. The eponymous comic book by Mark Millar was picked up for the film\`s plot. Company’s management wanted to make a hard film with a rating of “hard-R”.`,
@@ -27,7 +27,7 @@ const generateReviewDate = () => {
 
 export const generateReview = () => {
   return {
-    id: generateId(),
+    id: generateGuid(),
     text: getRandomArrayElement(reviewTexts),
     rating: generateReviewRating(),
     author: getRandomArrayElement(reviewNames),
