@@ -1,4 +1,5 @@
-import {debounce, throttle} from "../../utils/common";
+import {debounce} from "../../utils/common";
+import {clearAllTimeouts} from "../../utils/common";
 
 class VideoPlayer extends React.PureComponent {
   constructor(props) {
@@ -28,10 +29,10 @@ class VideoPlayer extends React.PureComponent {
 
   componentWillUnmount() {
     const video = this._videoRef.current;
-
     video.oncanplaythrough = null;
     video.onPlay = null;
     video.onPause = null;
+    clearAllTimeouts();
   }
 
   render() {

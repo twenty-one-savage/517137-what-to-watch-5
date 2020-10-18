@@ -39,3 +39,11 @@ export function debounce(fn, wait) {
     }, (wait || 1));
   };
 }
+
+export const clearAllTimeouts = () => {
+  let maxId;
+  maxId = setTimeout(function () {});
+  while (maxId--) {
+    clearTimeout(maxId);
+  }
+};
