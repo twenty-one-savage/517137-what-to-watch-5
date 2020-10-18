@@ -12,11 +12,7 @@ class Player extends PureComponent {
   }
 
   componentDidMount() {
-    const {videoSrc, posterSrc} = this.props;
     const video = this._videoRef.current;
-
-    video.src = videoSrc;
-    video.poster = posterSrc;
 
     video.oncanplaythrough = () => this.setState({
       isLoading: true
@@ -38,8 +34,11 @@ class Player extends PureComponent {
   }
 
   render() {
+    const {videoSrc, posterSrc} = this.props;
     return (
       <video
+        src={videoSrc}
+        poster={posterSrc}
         ref={this._videoRef}
         onMouseOver={this._playVideo}
         onMouseOut={this._stopVideo}
@@ -58,7 +57,6 @@ class Player extends PureComponent {
 
   _playVideo() {
     const video = this._videoRef.current;
-    video.src = this.props.videoSrc;
     video.muted = true;
     setTimeout(() => {
       this.setState({
@@ -72,7 +70,7 @@ class Player extends PureComponent {
     this.setState({
       isPlaying: false
     });
-    video.src = ` `;
+    video.currentTime = 0;
   }
 }
 
