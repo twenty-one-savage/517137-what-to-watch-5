@@ -1,7 +1,6 @@
-import {PureComponent} from "react";
 import {Link} from "react-router-dom";
 
-class AddReviewScreen extends PureComponent {
+class AddReviewScreen extends React.PureComponent {
   constructor(props) {
     super(props);
     this.film = props;

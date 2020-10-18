@@ -60,11 +60,6 @@ class VideoPlayer extends React.PureComponent {
   _playVideo() {
     const video = this._videoRef.current;
     video.muted = true;
-    // setTimeout(() => {
-    //   this.setState({
-    //     isPlaying: true
-    //   });
-    // }, 1000);
     this.setState({
       isPlaying: true
     });
