@@ -1,8 +1,9 @@
-import {PureComponent, createRef} from "react";
-class Player extends PureComponent {
+import {debounce, throttle} from "../../utils/common";
+
+class VideoPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
-    this._videoRef = createRef();
+    this._videoRef = React.createRef();
     this.state = {
       isLoading: true,
       isPlaying: props.isPlaying
@@ -40,8 +41,8 @@ class Player extends PureComponent {
         src={videoSrc}
         poster={posterSrc}
         ref={this._videoRef}
-        onMouseOver={this._playVideo}
-        onMouseOut={this._stopVideo}
+        onMouseOver={debounce(this._playVideo, 1000)}
+        onMouseOut={debounce(this._stopVideo, 1000)}
       />
     );
   }
@@ -58,11 +59,14 @@ class Player extends PureComponent {
   _playVideo() {
     const video = this._videoRef.current;
     video.muted = true;
-    setTimeout(() => {
-      this.setState({
-        isPlaying: true
-      });
-    }, 1000);
+    // setTimeout(() => {
+    //   this.setState({
+    //     isPlaying: true
+    //   });
+    // }, 1000);
+    this.setState({
+      isPlaying: true
+    });
   }
 
   _stopVideo() {
@@ -70,14 +74,15 @@ class Player extends PureComponent {
     this.setState({
       isPlaying: false
     });
-    video.currentTime = 0;
+    video.load();
+    video.pause();
   }
 }
 
-Player.propTypes = {
+VideoPlayer.propTypes = {
   videoSrc: PropTypes.string.isRequired,
   posterSrc: PropTypes.string,
   isPlaying: PropTypes.bool.isRequired
 };
 
-export default Player;
+export default VideoPlayer;
