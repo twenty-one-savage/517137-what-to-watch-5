@@ -1,4 +1,3 @@
-// import {debounce} from "../../utils/common";
 import {clearAllTimeouts} from "../../utils/common";
 
 class VideoPlayer extends React.PureComponent {
@@ -9,6 +8,7 @@ class VideoPlayer extends React.PureComponent {
       isLoading: true,
       isPlaying: props.isPlaying
     };
+    this._timeoutId = null;
     this._playVideo = this._playVideo.bind(this);
     this._stopVideo = this._stopVideo.bind(this);
   }
@@ -33,6 +33,7 @@ class VideoPlayer extends React.PureComponent {
     video.oncanplaythrough = null;
     video.onPlay = null;
     video.onPause = null;
+    clearAllTimeouts();
   }
 
   render() {
@@ -60,7 +61,7 @@ class VideoPlayer extends React.PureComponent {
   _playVideo() {
     const video = this._videoRef.current;
     video.muted = true;
-    setTimeout(() => {
+    this._timeoutId = setTimeout(() => {
       this.setState({
         isPlaying: true
       });
@@ -69,7 +70,7 @@ class VideoPlayer extends React.PureComponent {
 
   _stopVideo() {
     const video = this._videoRef.current;
-    clearAllTimeouts();
+    clearTimeout(this._timeoutId);
     this.setState({
       isPlaying: false
     });
