@@ -31,3 +31,8 @@ export const clearAllTimeouts = () => {
     clearTimeout(maxId);
   }
 };
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
+
