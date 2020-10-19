@@ -1,4 +1,4 @@
-import {debounce} from "../../utils/common";
+// import {debounce} from "../../utils/common";
 import {clearAllTimeouts} from "../../utils/common";
 
 class VideoPlayer extends React.PureComponent {
@@ -29,10 +29,10 @@ class VideoPlayer extends React.PureComponent {
 
   componentWillUnmount() {
     const video = this._videoRef.current;
+
     video.oncanplaythrough = null;
     video.onPlay = null;
     video.onPause = null;
-    clearAllTimeouts();
   }
 
   render() {
@@ -42,8 +42,8 @@ class VideoPlayer extends React.PureComponent {
         src={videoSrc}
         poster={posterSrc}
         ref={this._videoRef}
-        onMouseOver={debounce(this._playVideo, 1000)}
-        onMouseOut={debounce(this._stopVideo, 1000)}
+        onMouseOver={this._playVideo}
+        onMouseOut={this._stopVideo}
       />
     );
   }
@@ -60,13 +60,16 @@ class VideoPlayer extends React.PureComponent {
   _playVideo() {
     const video = this._videoRef.current;
     video.muted = true;
-    this.setState({
-      isPlaying: true
-    });
+    setTimeout(() => {
+      this.setState({
+        isPlaying: true
+      });
+    }, 1000);
   }
 
   _stopVideo() {
     const video = this._videoRef.current;
+    clearAllTimeouts();
     this.setState({
       isPlaying: false
     });

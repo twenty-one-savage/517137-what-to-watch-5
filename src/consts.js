@@ -1,5 +1,3 @@
-// export const DEBOUNCE_INTERVAL = 1001;
-
 export const Film = {
   COUNT: {
     main: 8
