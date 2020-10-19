@@ -16,3 +16,7 @@ export const Film = {
     }
   }
 };
+
+export const FilmGenres = {
+  ALL_GENRES: `All Genres`
+};

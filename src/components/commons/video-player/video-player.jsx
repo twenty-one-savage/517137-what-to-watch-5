@@ -1,4 +1,4 @@
-import {clearAllTimeouts} from "../../utils/common";
+import {clearAllTimeouts} from "../../../utils/common";
 
 class VideoPlayer extends React.PureComponent {
   constructor(props) {

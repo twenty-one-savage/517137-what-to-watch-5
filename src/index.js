@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import App from "./components/app/app";
+import App from "./components/commons/app/app";
 import {generateFilms} from "./mocks/films";
 import {createStore} from "redux";
 import {Provider} from "react-redux";

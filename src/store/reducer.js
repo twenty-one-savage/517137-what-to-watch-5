@@ -1,20 +1,24 @@
 import {extend} from "../utils/common";
-import {ActionsType} from "./action";
+import {ActionType} from "./action";
+import {getFilmsByGenre, genres} from "../utils/films";
+import {allFilms} from "../mocks/films";
+import {FilmGenres} from "../consts";
 
 const initialState = {
-  genre: ``,
-  films: []
+  genres,
+  activeGenre: FilmGenres.ALL_GENRES,
+  filteredFilms: allFilms
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionsType.CHANGE_FILTER:
+    case ActionType.CHANGE_FILTER_BY_GENRE:
       return extend(state, {
-        genre: action.payload
+        activeGenre: action.payload
       });
-    case ActionsType.GET_FILMS:
+    case ActionType.GET_FILMS_BY_GENRE:
       return extend(state, {
-        films: action.payload.slice().filter((film) => film.genre === state.genre)
+        filteredFilms: getFilmsByGenre(allFilms, action.payload)
       });
     default:
       return state;

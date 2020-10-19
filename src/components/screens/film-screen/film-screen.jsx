@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {filmsType} from "../../utils/types";
+import {filmsType} from "../../../utils/types";
 
 const FilmScreen = (props) => {
   const {films, match} = props;
