@@ -1,4 +1,4 @@
-import {clearAllTimeouts} from "../../../utils/common";
+// import {clearAllTimeouts} from "../../../utils/common";
 
 class VideoPlayer extends React.PureComponent {
   constructor(props) {
@@ -9,8 +9,8 @@ class VideoPlayer extends React.PureComponent {
       isPlaying: props.isPlaying
     };
     this._timeoutId = null;
-    this._playVideo = this._playVideo.bind(this);
-    this._stopVideo = this._stopVideo.bind(this);
+    this._handleVideoMouseOver = this._handleVideoMouseOver.bind(this);
+    this._handleVideoMouseOut = this._handleVideoMouseOut.bind(this);
   }
 
   componentDidMount() {
@@ -27,28 +27,6 @@ class VideoPlayer extends React.PureComponent {
     });
   }
 
-  componentWillUnmount() {
-    const video = this._videoRef.current;
-
-    video.oncanplaythrough = null;
-    video.onPlay = null;
-    video.onPause = null;
-    clearAllTimeouts();
-  }
-
-  render() {
-    const {videoSrc, posterSrc} = this.props;
-    return (
-      <video
-        src={videoSrc}
-        poster={posterSrc}
-        ref={this._videoRef}
-        onMouseOver={this._playVideo}
-        onMouseOut={this._stopVideo}
-      />
-    );
-  }
-
   componentDidUpdate() {
     const video = this._videoRef.current;
     if (this.state.isPlaying) {
@@ -58,7 +36,15 @@ class VideoPlayer extends React.PureComponent {
     }
   }
 
-  _playVideo() {
+  componentWillUnmount() {
+    const video = this._videoRef.current;
+
+    video.oncanplaythrough = null;
+    video.onPlay = null;
+    video.onPause = null;
+  }
+
+  _handleVideoMouseOver() {
     const video = this._videoRef.current;
     video.muted = true;
     this._timeoutId = setTimeout(() => {
@@ -68,14 +54,26 @@ class VideoPlayer extends React.PureComponent {
     }, 1000);
   }
 
-  _stopVideo() {
+  _handleVideoMouseOut() {
     const video = this._videoRef.current;
     clearTimeout(this._timeoutId);
     this.setState({
       isPlaying: false
     });
     video.load();
-    video.pause();
+  }
+
+  render() {
+    const {videoSrc, posterSrc} = this.props;
+    return (
+      <video
+        src={videoSrc}
+        poster={posterSrc}
+        ref={this._videoRef}
+        onMouseOver={this._handleVideoMouseOver}
+        onMouseOut={this._handleVideoMouseOut}
+      />
+    );
   }
 }
 
