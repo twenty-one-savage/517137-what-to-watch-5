@@ -1,11 +1,9 @@
 import ReactDOM from "react-dom";
 import App from "./components/commons/app/app";
-import {generateFilms} from "./mocks/films";
+import {allFilms} from "./mocks/films";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
 import {reducer} from "./store/reducer";
-
-const films = generateFilms();
 
 const store = createStore(
     reducer,
@@ -15,7 +13,7 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
       <App
-        films={films}
+        films={allFilms}
       />
     </Provider>,
     document.querySelector(`#root`)

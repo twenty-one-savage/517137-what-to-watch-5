@@ -150,9 +150,8 @@ const generateFilm = () => {
   };
 };
 
-
-export const generateFilms = () => {
-  return new Array(Film.COUNT.main).fill().map(generateFilm);
+const generateFilms = () => {
+  return new Array(10).fill().map(generateFilm);
 };
 
 export const allFilms = generateFilms();
