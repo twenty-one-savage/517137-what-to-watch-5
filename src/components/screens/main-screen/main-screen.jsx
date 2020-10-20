@@ -1,6 +1,6 @@
-import ListFilms from "../../commons/list-films/list-films";
+import ListFilms from "../../commons/list-films/list-films.connect";
+import ListGenres from "../../commons/list-genres/list-genres.connect";
 import {filmsType} from "../../../utils/types";
-import ListGenres from "../../commons/list-genres/list-genres";
 
 const MainScreen = (props) => {
   const {films} = props;

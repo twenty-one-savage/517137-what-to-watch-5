@@ -18,5 +18,6 @@ export const Film = {
 };
 
 export const FilmGenres = {
-  ALL_GENRES: `All Genres`
+  ALL_GENRES: `All Genres`,
+  MAX_COUNT: 9
 };

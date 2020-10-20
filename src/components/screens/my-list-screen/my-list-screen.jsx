@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import ListFilms from "../../commons/list-films/list-films";
+import ListFilms from "../../commons/list-films/list-films.connect";
 import {filmsType} from "../../../utils/types";
 
 const MyListScreen = (props) => {

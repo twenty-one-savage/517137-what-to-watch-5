@@ -1,6 +1,3 @@
-import {connect} from "react-redux";
-import {mapStateToProps, mapDispatchToProps} from "./list-genres.connect";
-
 const ListGenres = ({genres, activeGenre, changeActiveFilter}) => {
   return (
     <ul className="catalog__genres-list">
@@ -26,5 +23,4 @@ ListGenres.propTypes = {
   changeActiveFilter: PropTypes.func.isRequired
 };
 
-export {ListGenres};
-export default connect(mapStateToProps, mapDispatchToProps)(ListGenres);
+export default ListGenres;

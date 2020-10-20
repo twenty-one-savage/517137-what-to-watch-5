@@ -37,7 +37,11 @@ const filmGenres = [
   `Drama`,
   `Fantasy`,
   `Urban`,
-  `Romance`
+  `Romance`,
+  `Anime`,
+  `Western`,
+  `Biography`,
+  `History`
 ];
 
 const filmStorylines = [

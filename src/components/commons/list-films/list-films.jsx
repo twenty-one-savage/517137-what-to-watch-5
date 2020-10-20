@@ -1,8 +1,6 @@
-import {connect} from "react-redux";
 import FilmCard from "../film-card/film-card";
 import {filmsType} from "../../../utils/types";
 import {FilmGenres} from "../../../consts";
-import {mapStateToProps} from "./list-films.connect";
 
 const getFilmsByGenre = (list, genre) => {
   return genre === FilmGenres.ALL_GENRES ? list : list.filter(((el) => {
@@ -23,5 +21,4 @@ const ListFilms = ({films, activeGenre}) => {
 
 ListFilms.propTypes = filmsType;
 
-export {ListFilms};
-export default connect(mapStateToProps)(ListFilms);
+export default ListFilms;
