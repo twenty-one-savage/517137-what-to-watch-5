@@ -28,7 +28,7 @@ const App = (props) => {
           exact
           path="/films/:id?"
           render={(params) => (
-            <FilmScreen {...params} films={films} />
+            <FilmScreen {...params} />
           )}
         />
         <Route exact path="/player/:id" component={PlayerScreen} />

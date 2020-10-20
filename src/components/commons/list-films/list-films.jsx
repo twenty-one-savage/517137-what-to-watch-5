@@ -1,20 +1,25 @@
 import {connect} from "react-redux";
 import FilmCard from "../film-card/film-card";
 import {filmsType} from "../../../utils/types";
+import {FilmGenres} from "../../../consts";
+import {mapStateToProps} from "./list-films.connect";
 
-const ListFilms = ({films}) => {
+const getFilmsByGenre = (list, genre) => {
+  return genre === FilmGenres.ALL_GENRES ? list : list.filter(((el) => {
+    return el.genres.find((item) => item === genre);
+  }));
+};
+
+const ListFilms = ({films, activeGenre}) => {
+  const filteredFilms = getFilmsByGenre(films, activeGenre);
   return (
     <div className="catalog__movies-list">
-      {films.map((film) => (
+      {filteredFilms.map((film) => (
         <FilmCard key={film.id} film={film}/>
       ))}
     </div>
   );
 };
-
-const mapStateToProps = (state) => ({
-  films: state.filteredFilms
-});
 
 ListFilms.propTypes = filmsType;
 
