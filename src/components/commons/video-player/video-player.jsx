@@ -1,5 +1,3 @@
-// import {clearAllTimeouts} from "../../../utils/common";
-
 class VideoPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -15,16 +13,26 @@ class VideoPlayer extends React.PureComponent {
 
   componentDidMount() {
     const video = this._videoRef.current;
+    video.muted = true;
 
     video.oncanplaythrough = () => this.setState({
-      isLoading: true
+      isLoading: false
     });
     video.onplay = () => this.setState({
       isPlaying: true
     });
-    video.onpause = () => this.setState({
+    video.onload = () => this.setState({
       isPlaying: false
     });
+  }
+
+  componentWillUnmount() {
+    const video = this._videoRef.current;
+
+    video.oncanplaythrough = null;
+    video.onplay = null;
+    video.onload = null;
+    clearTimeout(this._timeoutId);
   }
 
   componentDidUpdate() {
@@ -32,21 +40,11 @@ class VideoPlayer extends React.PureComponent {
     if (this.state.isPlaying) {
       video.play();
     } else {
-      video.pause();
+      video.load();
     }
   }
 
-  componentWillUnmount() {
-    const video = this._videoRef.current;
-
-    video.oncanplaythrough = null;
-    video.onPlay = null;
-    video.onPause = null;
-  }
-
   _handleVideoMouseOver() {
-    const video = this._videoRef.current;
-    video.muted = true;
     this._timeoutId = setTimeout(() => {
       this.setState({
         isPlaying: true
@@ -55,12 +53,10 @@ class VideoPlayer extends React.PureComponent {
   }
 
   _handleVideoMouseOut() {
-    const video = this._videoRef.current;
     clearTimeout(this._timeoutId);
     this.setState({
       isPlaying: false
     });
-    video.load();
   }
 
   render() {
