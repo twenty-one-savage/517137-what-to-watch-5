@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
-import ListFilm from "../list-film/list-film";
-import {filmsType} from "../../utils/types";
+import ListFilms from "../../commons/list-films/list-films.connect";
+import {filmsType} from "../../../utils/types";
 
 const MyListScreen = (props) => {
   const {films} = props;
@@ -27,7 +27,7 @@ const MyListScreen = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <ListFilm films={films}/>
+        <ListFilms films={films}/>
       </section>
 
       <footer className="page-footer">

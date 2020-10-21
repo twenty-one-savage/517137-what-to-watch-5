@@ -1,5 +1,7 @@
 import {Link} from "react-router-dom";
-import {filmsType} from "../../utils/types";
+import {filmsType} from "../../../utils/types";
+import {connect} from "react-redux";
+import {mapStateToProps} from "./film-screen.connect";
 
 const FilmScreen = (props) => {
   const {films, match} = props;
@@ -166,4 +168,5 @@ const FilmScreen = (props) => {
 
 FilmScreen.propTypes = filmsType;
 
-export default FilmScreen;
+export {FilmScreen};
+export default connect(mapStateToProps)(FilmScreen);

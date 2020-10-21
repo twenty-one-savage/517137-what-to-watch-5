@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import Player from "../player/player";
+import VideoPlayer from "../video-player/video-player";
 
 const FilmCard = (props) => {
   const {film} = props;
@@ -8,7 +8,7 @@ const FilmCard = (props) => {
   return (
     <article className="small-movie-card catalog__movies-card" id={id}>
       <Link to={`/films/${id}`}>
-        <Player className="small-movie-card__image" videoSrc={video} isPlaying={false} posterSrc={poster} />
+        <VideoPlayer className="small-movie-card__image" videoSrc={video} isPlaying={false} posterSrc={poster} />
       </Link>
       <h3 className="small-movie-card__title">
         <Link to={`/films/${id}`} className="small-movie-card__link">{title}</Link>

@@ -23,3 +23,16 @@ export const getFewRandomArrayElements = (arr) => {
     .sort(()=> 0.5 - Math.random())
     .slice(getRandomInteger(0, arr.length - 1));
 };
+
+export const clearAllTimeouts = () => {
+  let maxId;
+  maxId = setTimeout(function () {});
+  while (maxId--) {
+    clearTimeout(maxId);
+  }
+};
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
+
