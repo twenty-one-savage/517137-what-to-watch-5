@@ -8,7 +8,7 @@ const getFilmsByGenre = (list, genre) => {
   }));
 };
 
-class ListFilms extends React.Component {
+class ListFilms extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
