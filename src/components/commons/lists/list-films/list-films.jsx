@@ -1,6 +1,6 @@
-import FilmCard from "../film-card/film-card";
-import {filmsType} from "../../../commonPropTypes";
-import {Film, FilmGenres} from "../../../consts";
+import FilmCard from "../../film-card/film-card";
+import {filmsType} from "../../../../commonPropTypes";
+import {Film, FilmGenres} from "../../../../consts";
 
 const getFilmsByGenre = (list, genre) => {
   return genre === FilmGenres.ALL_GENRES ? list : list.filter(((el) => {

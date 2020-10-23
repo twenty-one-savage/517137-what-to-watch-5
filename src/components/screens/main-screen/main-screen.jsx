@@ -1,5 +1,5 @@
-import ListFilms from "../../commons/list-films/list-films.connect";
-import ListGenres from "../../commons/list-genres/list-genres.connect";
+import ListFilms from "../../commons/lists/list-films/list-films.connect";
+import ListGenres from "../../commons/lists/list-genres/list-genres.connect";
 import {filmsType} from "../../../commonPropTypes";
 import Footer from "../../commons/sections/footer/footer";
 import Header from "../../commons/sections/header/header";
