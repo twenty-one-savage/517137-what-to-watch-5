@@ -1,7 +1,7 @@
 import Header from "../../commons/sections/header/header";
 import Footer from "../../commons/sections/footer/footer";
 import ListFilms from "../../commons/list-films/list-films.connect";
-import {filmsType} from "../../../utils/types";
+import {filmsType} from "../../../commonPropTypes";
 import {HeaderClasses, HeaderTitles} from "../../../consts";
 
 const MyListScreen = (props) => {

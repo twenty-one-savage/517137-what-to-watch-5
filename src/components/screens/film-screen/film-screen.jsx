@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import Header from "../../commons/sections/header/header";
 import Footer from "../../commons/sections/footer/footer";
-import {filmsType} from "../../../utils/types";
+import {filmsType} from "../../../commonPropTypes";
 import {HeaderClasses} from "../../../consts";
 
 const FilmScreen = (props) => {

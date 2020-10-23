@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import VideoPlayer from "../video-player/video-player";
+import filmCardProps from "./film-card.prop";
 
 const FilmCard = (props) => {
   const {film} = props;
@@ -17,13 +18,6 @@ const FilmCard = (props) => {
   );
 };
 
-FilmCard.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    video: PropTypes.string.isRequired
-  }).isRequired
-};
+FilmCard.propTypes = filmCardProps;
 
 export default FilmCard;

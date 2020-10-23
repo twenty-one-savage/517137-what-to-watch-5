@@ -1,3 +1,5 @@
+import videoPlayerProps from "./video-player.prop";
+
 class VideoPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -73,10 +75,6 @@ class VideoPlayer extends React.PureComponent {
   }
 }
 
-VideoPlayer.propTypes = {
-  videoSrc: PropTypes.string.isRequired,
-  posterSrc: PropTypes.string,
-  isPlaying: PropTypes.bool.isRequired
-};
+VideoPlayer.propTypes = videoPlayerProps;
 
 export default VideoPlayer;

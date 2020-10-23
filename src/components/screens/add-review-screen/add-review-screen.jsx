@@ -1,6 +1,6 @@
 import Header from "../../commons/sections/header/header";
 import BreadCrumbs from "../../commons/breadcrumbs/breadcrumbs";
-import {filmsType} from "../../../utils/types";
+import {filmsType} from "../../../commonPropTypes";
 
 class AddReviewScreen extends React.PureComponent {
   constructor(props) {

@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import breadCrumbsProp from "./breadcrumbs.prop";
 
 const BreadCrumbs = (props) => {
   const {id, title} = props;
@@ -16,9 +17,6 @@ const BreadCrumbs = (props) => {
   );
 };
 
-BreadCrumbs.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
-};
+BreadCrumbs.propTypes = breadCrumbsProp;
 
 export default BreadCrumbs;

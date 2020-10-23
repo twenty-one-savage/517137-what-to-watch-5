@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import UserBlock from "../../user-block/user-block";
+import headerProps from "./header.prop";
 
 const Header = (props) => {
   const {title, className, children} = props;
@@ -19,10 +20,6 @@ const Header = (props) => {
   );
 };
 
-Header.propTypes = {
-  title: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.element
-};
+Header.propTypes = headerProps;
 
 export default Header;

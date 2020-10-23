@@ -5,7 +5,7 @@ import FilmScreen from "../../screens/film-screen/film-screen.connect";
 import MyListScreen from "../../screens/my-list-screen/my-list-screen.connect";
 import PlayerScreen from "../../screens/player-screen/player-screen";
 import SignInScreen from "../../screens/sign-in-screen/sign-in-screen";
-import {filmsType} from "../../../utils/types";
+import {filmsType} from "../../../commonPropTypes";
 
 const App = (props) => {
   const {films} = props;
