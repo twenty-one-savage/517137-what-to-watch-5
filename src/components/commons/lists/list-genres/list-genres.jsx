@@ -1,6 +1,7 @@
 import listGenreProps from "./list-genres.prop";
 
-const ListGenres = ({genres, activeGenre, changeActiveFilter}) => {
+const ListGenres = (props) => {
+  const {genres, activeGenre, changeActiveFilter} = props;
   return (
     <ul className="catalog__genres-list">
       {genres.map((genre, i) =>

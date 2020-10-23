@@ -8,6 +8,4 @@ const UserBlock = () => {
   );
 };
 
-UserBlock.propTypes = {};
-
 export default UserBlock;
