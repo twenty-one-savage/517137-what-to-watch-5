@@ -1,4 +1,5 @@
 import FilmCard from "../../film-card/film-card";
+import BtnShowMore from "../../btn-show-more/btn-show-more";
 import {filmsType} from "../../../../commonPropTypes";
 import {Film, FilmGenres} from "../../../../consts";
 
@@ -14,20 +15,30 @@ class ListFilms extends React.PureComponent {
     this.state = {
       renderedFilmsCount: Film.COUNT.main
     };
+    this._handleBtnShowMoreClick = this._handleBtnShowMoreClick.bind(this);
+  }
+
+  _handleBtnShowMoreClick(evt) {
+    evt.preventDefault();
+    this.setState({
+      renderedFilmsCount: this.state.renderedFilmsCount + Film.COUNT.main
+    });
   }
 
   render() {
     const {films, activeGenre} = this.props;
     const filteredFilms = getFilmsByGenre(films, activeGenre);
+
+    const filmsCount = filteredFilms.length;
+    const remains = filteredFilms.slice(0, Math.min(filmsCount, this.state.renderedFilmsCount));
     return (
       <>
         <div className="catalog__movies-list">
-          {filteredFilms
-            .slice(0, Math.min(filteredFilms.length, Film.COUNT.main))
-            .map((film) => (
-              <FilmCard key={film.id} film={film}/>
-            ))}
+          {remains.map((film) => (
+            <FilmCard key={film.id} film={film}/>
+          ))}
         </div>
+        {filmsCount > this.state.renderedFilmsCount && <BtnShowMore onClick={this._handleBtnShowMoreClick}/>}
       </>
     );
   }
