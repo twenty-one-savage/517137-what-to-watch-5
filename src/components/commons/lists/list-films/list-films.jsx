@@ -1,13 +1,7 @@
 import FilmCard from "../../film-card/film-card";
 import BtnShowMore from "../../btn-show-more/btn-show-more";
 import {filmsType} from "../../../../commonPropTypes";
-import {Film, FilmGenres} from "../../../../consts";
-
-const getFilmsByGenre = (list, genre) => {
-  return genre === FilmGenres.ALL_GENRES ? list : list.filter(((el) => {
-    return el.genres.find((item) => item === genre);
-  }));
-};
+import {Film} from "../../../../consts";
 
 class ListFilms extends React.PureComponent {
   constructor(props) {
@@ -26,11 +20,10 @@ class ListFilms extends React.PureComponent {
   }
 
   render() {
-    const {films, activeGenre} = this.props;
-    const filteredFilms = getFilmsByGenre(films, activeGenre);
+    const {films} = this.props;
 
-    const filmsCount = filteredFilms.length;
-    const remains = filteredFilms.slice(0, Math.min(filmsCount, this.state.renderedFilmsCount));
+    const filmsCount = films.length;
+    const remains = films.slice(0, Math.min(filmsCount, this.state.renderedFilmsCount));
     return (
       <>
         <div className="catalog__movies-list">
