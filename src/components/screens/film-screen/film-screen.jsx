@@ -1,6 +1,10 @@
 import {Link} from "react-router-dom";
 import Header from "../../commons/sections/header/header";
 import Footer from "../../commons/sections/footer/footer";
+import Tabs from "../../commons/tabs/tabs";
+import TabsOverview from "../../commons/tabs/tabs-overview/tabs-overview";
+import TabsDetails from "../../commons/tabs/tabs-details/tabs-details";
+import TabsReviews from "../../commons/tabs/tabs-reviews/tabs-reviews";
 import {filmsType} from "../../../commonPropTypes";
 import {HeaderClasses} from "../../../consts";
 
@@ -9,7 +13,7 @@ const FilmScreen = (props) => {
   const filmId = match.params.id;
 
   const currentFilm = films.find((film) => film.id === filmId);
-  const {title, poster, year, storyline, genres, rating, poll, producer, actors, background} = currentFilm;
+  const {title, poster, year, storyline, genres, rating, poll, producer, actors, background, duration} = currentFilm;
 
   return (
       <>
@@ -55,38 +59,7 @@ const FilmScreen = (props) => {
               <div className="movie-card__poster movie-card__poster--big">
                 <img src={poster} alt={title} width="218" height="327"/>
               </div>
-
-              <div className="movie-card__desc">
-                <nav className="movie-nav movie-card__nav">
-                  <ul className="movie-nav__list">
-                    <li className="movie-nav__item movie-nav__item--active">
-                      <a href="#" className="movie-nav__link">Overview</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Details</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Reviews</a>
-                    </li>
-                  </ul>
-                </nav>
-
-                <div className="movie-rating">
-                  <div className="movie-rating__score">{rating.value}</div>
-                  <p className="movie-rating__meta">
-                    <span className="movie-rating__level">{rating.tag}</span>
-                    <span className="movie-rating__count">{poll} ratings</span>
-                  </p>
-                </div>
-
-                <div className="movie-card__text">
-                  <p>{storyline}</p>
-
-                  <p className="movie-card__director"><strong>Director: {producer}</strong></p>
-
-                  <p className="movie-card__starring"><strong>Starring: {actors.join(`, `)} and other</strong></p>
-                </div>
-              </div>
+              <Tabs film={currentFilm}/>
             </div>
           </div>
         </section>
