@@ -14,6 +14,9 @@ export const Film = {
       min: 0,
       max: 10
     }
+  },
+  SAME_FILMS: {
+    count: 4
   }
 };
 

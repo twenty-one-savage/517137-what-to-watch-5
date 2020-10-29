@@ -7,7 +7,7 @@ const FilmCard = (props) => {
   const {id, poster, title, video} = film;
 
   return (
-    <article className="small-movie-card catalog__movies-card" id={id}>
+    <article className="small-movie-card catalog__movies-card">
       <Link to={`/films/${id}`}>
         <VideoPlayer className="small-movie-card__image" videoSrc={video} isPlaying={false} posterSrc={poster} />
       </Link>

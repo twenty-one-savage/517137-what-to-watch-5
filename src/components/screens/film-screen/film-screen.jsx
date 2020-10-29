@@ -2,18 +2,16 @@ import {Link} from "react-router-dom";
 import Header from "../../commons/sections/header/header";
 import Footer from "../../commons/sections/footer/footer";
 import Tabs from "../../commons/tabs/tabs";
-import TabsOverview from "../../commons/tabs/tabs-overview/tabs-overview";
-import TabsDetails from "../../commons/tabs/tabs-details/tabs-details";
-import TabsReviews from "../../commons/tabs/tabs-reviews/tabs-reviews";
 import {filmsType} from "../../../commonPropTypes";
 import {HeaderClasses} from "../../../consts";
+import ListSameFilms from "../../commons/lists/list-same-films/list-same-films";
 
 const FilmScreen = (props) => {
   const {films, match} = props;
   const filmId = match.params.id;
 
   const currentFilm = films.find((film) => film.id === filmId);
-  const {title, poster, year, storyline, genres, rating, poll, producer, actors, background, duration} = currentFilm;
+  const {title, poster, year, genres, background} = currentFilm;
 
   return (
       <>
@@ -68,44 +66,7 @@ const FilmScreen = (props) => {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <div className="catalog__movies-list">
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175"/>
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of
-                    Grindelwald</a>
-                </h3>
-              </article>
-
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175"/>
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-                </h3>
-              </article>
-
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175"/>
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-                </h3>
-              </article>
-
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/aviator.jpg" alt="Aviator" width="280" height="175"/>
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-                </h3>
-              </article>
-            </div>
+            <ListSameFilms films={films} genre={genres[0]}/>
           </section>
 
           <Footer />
