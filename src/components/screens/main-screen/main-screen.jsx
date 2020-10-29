@@ -1,6 +1,9 @@
-import ListFilms from "../../commons/list-films/list-films.connect";
-import ListGenres from "../../commons/list-genres/list-genres.connect";
-import {filmsType} from "../../../utils/types";
+import ListFilms from "../../commons/lists/list-films/list-films.connect";
+import ListGenres from "../../commons/lists/list-genres/list-genres.connect";
+import {filmsType} from "../../../commonPropTypes";
+import Footer from "../../commons/sections/footer/footer";
+import Header from "../../commons/sections/header/header";
+import {HeaderClasses} from "../../../consts";
 
 const MainScreen = (props) => {
   const {films} = props;
@@ -46,21 +49,7 @@ const MainScreen = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-            </div>
-          </div>
-        </header>
+        <Header className={HeaderClasses.MOVIE_CARD_HEAD} />
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
@@ -101,19 +90,7 @@ const MainScreen = (props) => {
           <ListFilms/>
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2020 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );

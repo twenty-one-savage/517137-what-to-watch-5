@@ -151,7 +151,7 @@ const generateFilm = () => {
 };
 
 const generateFilms = () => {
-  return new Array(10).fill().map(generateFilm);
+  return new Array(11).fill().map(generateFilm);
 };
 
 export const allFilms = generateFilms();

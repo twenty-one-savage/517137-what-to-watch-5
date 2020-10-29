@@ -1,14 +1,17 @@
 import {Link} from "react-router-dom";
-import {filmsType} from "../../../utils/types";
-import {connect} from "react-redux";
-import {mapStateToProps} from "./film-screen.connect";
+import Header from "../../commons/sections/header/header";
+import Footer from "../../commons/sections/footer/footer";
+import Tabs from "../../commons/tabs/tabs";
+import {filmsType} from "../../../commonPropTypes";
+import {HeaderClasses} from "../../../consts";
+import ListSameFilms from "../../commons/lists/list-same-films/list-same-films";
 
 const FilmScreen = (props) => {
   const {films, match} = props;
   const filmId = match.params.id;
 
   const currentFilm = films.find((film) => film.id === filmId);
-  const {title, poster, year, storyline, genres, rating, poll, producer, actors, background} = currentFilm;
+  const {title, poster, year, genres, background} = currentFilm;
 
   return (
       <>
@@ -20,21 +23,7 @@ const FilmScreen = (props) => {
 
             <h1 className="visually-hidden">WTW</h1>
 
-            <header className="page-header movie-card__head">
-              <div className="logo">
-                <Link to={`/`} className="logo__link">
-                  <span className="logo__letter logo__letter--1">W</span>
-                  <span className="logo__letter logo__letter--2">T</span>
-                  <span className="logo__letter logo__letter--3">W</span>
-                </Link>
-              </div>
-
-              <div className="user-block">
-                <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-                </div>
-              </div>
-            </header>
+            <Header className={HeaderClasses.MOVIE_CARD_HEAD} />
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
@@ -68,38 +57,7 @@ const FilmScreen = (props) => {
               <div className="movie-card__poster movie-card__poster--big">
                 <img src={poster} alt={title} width="218" height="327"/>
               </div>
-
-              <div className="movie-card__desc">
-                <nav className="movie-nav movie-card__nav">
-                  <ul className="movie-nav__list">
-                    <li className="movie-nav__item movie-nav__item--active">
-                      <a href="#" className="movie-nav__link">Overview</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Details</a>
-                    </li>
-                    <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Reviews</a>
-                    </li>
-                  </ul>
-                </nav>
-
-                <div className="movie-rating">
-                  <div className="movie-rating__score">{rating.value}</div>
-                  <p className="movie-rating__meta">
-                    <span className="movie-rating__level">{rating.tag}</span>
-                    <span className="movie-rating__count">{poll} ratings</span>
-                  </p>
-                </div>
-
-                <div className="movie-card__text">
-                  <p>{storyline}</p>
-
-                  <p className="movie-card__director"><strong>Director: {producer}</strong></p>
-
-                  <p className="movie-card__starring"><strong>Starring: {actors.join(`, `)} and other</strong></p>
-                </div>
-              </div>
+              <Tabs film={currentFilm}/>
             </div>
           </div>
         </section>
@@ -108,59 +66,10 @@ const FilmScreen = (props) => {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <div className="catalog__movies-list">
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175"/>
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of
-                    Grindelwald</a>
-                </h3>
-              </article>
-
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175"/>
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-                </h3>
-              </article>
-
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175"/>
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-                </h3>
-              </article>
-
-              <article className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/aviator.jpg" alt="Aviator" width="280" height="175"/>
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-                </h3>
-              </article>
-            </div>
+            <ListSameFilms films={films} genre={genres[0]}/>
           </section>
 
-          <footer className="page-footer">
-            <div className="logo">
-              <a href="main.html" className="logo__link logo__link--light">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="copyright">
-              <p>© 2020 What to watch Ltd.</p>
-            </div>
-          </footer>
+          <Footer />
         </div>
       </>
   );
@@ -168,5 +77,4 @@ const FilmScreen = (props) => {
 
 FilmScreen.propTypes = filmsType;
 
-export {FilmScreen};
-export default connect(mapStateToProps)(FilmScreen);
+export default FilmScreen;

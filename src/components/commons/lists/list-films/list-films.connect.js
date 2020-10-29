@@ -1,8 +1,9 @@
 import {connect} from "react-redux";
 import ListFilms from "./list-films";
+import {getFilmsByGenre} from "../../../../store/selectors/getFilmsByGenre";
 
 export const mapStateToProps = (state) => ({
-  films: state.films,
+  films: getFilmsByGenre(state.films, state.activeGenre),
   activeGenre: state.activeGenre
 });
 

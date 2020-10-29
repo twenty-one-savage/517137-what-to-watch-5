@@ -1,4 +1,7 @@
-const ListGenres = ({genres, activeGenre, changeActiveFilter}) => {
+import listGenreProps from "./list-genres.prop";
+
+const ListGenres = (props) => {
+  const {genres, activeGenre, changeActiveFilter} = props;
   return (
     <ul className="catalog__genres-list">
       {genres.map((genre, i) =>
@@ -17,10 +20,6 @@ const ListGenres = ({genres, activeGenre, changeActiveFilter}) => {
   );
 };
 
-ListGenres.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  activeGenre: PropTypes.string.isRequired,
-  changeActiveFilter: PropTypes.func.isRequired
-};
+ListGenres.propTypes = listGenreProps;
 
 export default ListGenres;

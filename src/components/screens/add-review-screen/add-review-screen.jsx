@@ -1,9 +1,10 @@
-import {Link} from "react-router-dom";
+import Header from "../../commons/sections/header/header";
+import BreadCrumbs from "../../commons/breadcrumbs/breadcrumbs";
+import {filmsType} from "../../../commonPropTypes";
 
 class AddReviewScreen extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.film = props;
     this.state = {
       [`review-text`]: null,
       rating: null
@@ -25,7 +26,13 @@ class AddReviewScreen extends React.PureComponent {
   }
 
   render() {
-    const {id, background, title, poster} = this.film;
+    const {films, match} = this.props;
+    const filmId = match.params.id;
+
+    const currentFilm = films.find((film) => film.id === filmId);
+
+    const {id, background, title, poster} = currentFilm;
+
     return (
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">
@@ -35,32 +42,9 @@ class AddReviewScreen extends React.PureComponent {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <header className="page-header">
-            <div className="logo">
-              <Link to={`/`} className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </Link>
-            </div>
-
-            <nav className="breadcrumbs">
-              <ul className="breadcrumbs__list">
-                <li className="breadcrumbs__item">
-                  <Link to={`/films/${id}/`} className="breadcrumbs__link">{title}</Link>
-                </li>
-                <li className="breadcrumbs__item">
-                  <a className="breadcrumbs__link">Add review</a>
-                </li>
-              </ul>
-            </nav>
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
-            </div>
-          </header>
+          <Header>
+            <BreadCrumbs id={id} title={title} />
+          </Header>
 
           <div className="movie-card__poster movie-card__poster--small">
             <img src={poster} alt={title} width="218" height="327"/>
@@ -102,13 +86,6 @@ class AddReviewScreen extends React.PureComponent {
   }
 }
 
-AddReviewScreen.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    background: PropTypes.string.isRequired
-  }).isRequired
-};
+AddReviewScreen.propTypes = filmsType;
 
 export default AddReviewScreen;

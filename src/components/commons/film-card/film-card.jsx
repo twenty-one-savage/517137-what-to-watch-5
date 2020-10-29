@@ -1,12 +1,13 @@
 import {Link} from "react-router-dom";
 import VideoPlayer from "../video-player/video-player";
+import filmCardProps from "./film-card.prop";
 
 const FilmCard = (props) => {
   const {film} = props;
   const {id, poster, title, video} = film;
 
   return (
-    <article className="small-movie-card catalog__movies-card" id={id}>
+    <article className="small-movie-card catalog__movies-card">
       <Link to={`/films/${id}`}>
         <VideoPlayer className="small-movie-card__image" videoSrc={video} isPlaying={false} posterSrc={poster} />
       </Link>
@@ -17,13 +18,6 @@ const FilmCard = (props) => {
   );
 };
 
-FilmCard.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    video: PropTypes.string.isRequired
-  }).isRequired
-};
+FilmCard.propTypes = filmCardProps;
 
 export default FilmCard;
