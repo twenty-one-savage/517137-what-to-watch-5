@@ -34,3 +34,9 @@ export const HeaderTitles = {
   MY_LIST: `My list`,
   SIGN_IN: `Sign in`
 };
+
+export const Tab = {
+  OVERVIEW: `OVERVIEW`,
+  DETAILS: `DETAILS`,
+  REVIEWS: `REVIEWS`
+};

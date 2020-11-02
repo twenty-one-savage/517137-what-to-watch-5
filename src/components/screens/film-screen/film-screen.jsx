@@ -1,10 +1,16 @@
 import {Link} from "react-router-dom";
+
 import Header from "../../commons/sections/header/header";
 import Footer from "../../commons/sections/footer/footer";
-import Tabs from "../../commons/tabs/tabs";
+import FilmTabs from "../../commons/film-tabs/film-tabs";
+import ListSameFilms from "../../commons/lists/list-same-films/list-same-films";
+
+import withSwitchableTabs from "../../../hocs/with-active-tab/with-switchable-tabs";
+
 import {filmsType} from "../../../commonPropTypes";
 import {HeaderClasses} from "../../../consts";
-import ListSameFilms from "../../commons/lists/list-same-films/list-same-films";
+
+const FilmScreenWithSwitchableTabs = withSwitchableTabs(FilmTabs);
 
 const FilmScreen = (props) => {
   const {films, match} = props;
@@ -57,7 +63,7 @@ const FilmScreen = (props) => {
               <div className="movie-card__poster movie-card__poster--big">
                 <img src={poster} alt={title} width="218" height="327"/>
               </div>
-              <Tabs film={currentFilm}/>
+              <FilmScreenWithSwitchableTabs film={currentFilm}/>
             </div>
           </div>
         </section>
