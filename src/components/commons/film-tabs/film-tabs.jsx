@@ -1,7 +1,6 @@
 import TabsOverview from "./tabs-overview/tabs-overview";
 import TabsDetails from "./tabs-details/tabs-details";
 import TabsReviews from "./tabs-reviews/tabs-reviews";
-import withSwitchableTabs from "../../../hocs/with-active-tab/with-switchable-tabs";
 import {Tab} from "../../../consts";
 
 const TABS = {
@@ -19,7 +18,7 @@ const TABS = {
   },
 };
 
-const getTabContentByType = (tabType, film, reviews) => {
+const getTabContentByType = (tabType, film) => {
   switch (tabType) {
     case Tab.OVERVIEW:
       return <TabsOverview film={film} />;
@@ -71,6 +70,7 @@ class FilmTabs extends React.PureComponent {
 
 FilmTabs.propTypes = {
   activeTab: PropTypes.oneOf([...Object.values(Tab)]).isRequired,
+  tabClickHandler: PropTypes.func.isRequired,
   film: PropTypes.shape({
     rating: PropTypes.shape({
       value: PropTypes.string.isRequired,

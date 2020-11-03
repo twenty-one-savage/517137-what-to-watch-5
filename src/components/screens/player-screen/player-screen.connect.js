@@ -1,8 +1,8 @@
 import {connect} from "react-redux";
-import FilmScreen from "./film-screen";
+import PlayerScreen from "./player-screen";
 
 const mapStateToProps = (state) => ({
   films: state.films
 });
 
-export default connect(mapStateToProps)(FilmScreen);
+export default connect(mapStateToProps)(PlayerScreen);
