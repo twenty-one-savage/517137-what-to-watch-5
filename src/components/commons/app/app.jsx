@@ -1,21 +1,30 @@
 import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {connect} from "react-redux";
 import MainScreen from "../../screens/main-screen/main-screen.connect";
 import AddReviewScreen from "../../screens/add-review-screen/add-review-screen.connect";
 import FilmScreen from "../../screens/film-screen/film-screen.connect";
 import MyListScreen from "../../screens/my-list-screen/my-list-screen.connect";
-import PlayerScreen from "../../screens/player-screen/player-screen.connect";
+import PlayerScreen from "../../screens/player-screen/player-screen";
 import SignInScreen from "../../screens/sign-in-screen/sign-in-screen";
 import {filmsType} from "../../../commonPropTypes";
+import {getMatchingFilm} from "../../../utils/common";
+import withPlayer from "../../../hocs/with-player/with-player";
 
-const App = () => {
+const PlayerWrapped = withPlayer(PlayerScreen);
+
+const App = (props) => {
+  const {films} = props;
   return (
     <BrowserRouter>
       <Switch>
         <Route
           exact
           path="/"
-          render={(props) => (
-            <MainScreen {...props} />
+          render={({history}) => (
+            <MainScreen
+              film={films[0]}
+              btnPlayHandler={(id) => history.push(`/player/${id}`)}
+            />
           )}
         />
         <Route exact path="/login">
@@ -27,22 +36,28 @@ const App = () => {
         <Route
           exact
           path="/films/:id/review"
-          render={(props) => (
-            <AddReviewScreen {...props} />
+          render={(params) => (
+            <AddReviewScreen {...params} />
           )}
         />
         <Route
           exact
           path="/films/:id?"
-          render={(props) => (
-            <FilmScreen {...props} />
+          render={({match, history}) => (
+            <FilmScreen
+              film={getMatchingFilm(films, match)}
+              btnPlayHandler={(id) => history.push(`/player/${id}`)}
+            />
           )}
         />
         <Route
           exact
           path="/player/:id"
-          render={(props) => (
-            <PlayerScreen {...props} />
+          render={({match, history}) => (
+            <PlayerWrapped
+              film={getMatchingFilm(films, match)}
+              handlePlayerExitClick={() => history.goBack()}
+            />
           )}
         />
       </Switch>
@@ -50,6 +65,11 @@ const App = () => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  films: state.films
+});
+
 App.propTypes = filmsType;
 
-export default App;
+export {App};
+export default connect(mapStateToProps)(App);

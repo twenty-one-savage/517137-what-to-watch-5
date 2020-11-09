@@ -36,3 +36,17 @@ export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
+export const getFormattedTime = (time) => {
+  time = Math.floor(time);
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time - minutes * 60);
+
+  const minutesVal = minutes < 10 ? `0${minutes}` : String(minutes);
+  const secondsVal = seconds < 10 ? `0${seconds}` : String(seconds);
+
+  return `${minutesVal}:${secondsVal}`;
+};
+
+export const getVideoProgress = (video) => (Math.floor(video.currentTime) / (Math.floor(video.duration) / 100));
+
+export const getMatchingFilm = (films, {params}) => films.find((item) => item.id === (params.id));
