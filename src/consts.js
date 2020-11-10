@@ -35,8 +35,8 @@ export const HeaderTitles = {
   SIGN_IN: `Sign in`
 };
 
-export const Tab = {
-  OVERVIEW: `OVERVIEW`,
-  DETAILS: `DETAILS`,
-  REVIEWS: `REVIEWS`
+export const TabsType = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`
 };

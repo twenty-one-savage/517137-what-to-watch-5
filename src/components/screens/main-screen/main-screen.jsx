@@ -1,10 +1,10 @@
 import ListFilms from "../../commons/lists/list-films/list-films.connect";
 import ListGenres from "../../commons/lists/list-genres/list-genres.connect";
-import {filmsType} from "../../../commonPropTypes";
 import Footer from "../../commons/sections/footer/footer";
 import Header from "../../commons/sections/header/header";
 import {HeaderClasses} from "../../../consts";
 import BtnPlay from "../../commons/btnPlay/btnPlay";
+import {filmsType} from "../../../commonPropTypes";
 
 const MainScreen = (props) => {
   const {film, btnPlayHandler} = props;
@@ -92,6 +92,7 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
+  films: filmsType,
   film: PropTypes.shape({
     id: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,

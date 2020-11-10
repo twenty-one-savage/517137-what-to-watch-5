@@ -1,11 +1,11 @@
-import {Tab} from "../../consts";
+import {TabsType} from "../../consts";
 
-const withSwitchableTabs = (Component) => {
-  return class WithSwitchableTabs extends React.PureComponent {
+const withActiveTab = (Component) => {
+  return class WithActiveTabs extends React.PureComponent {
     constructor(props) {
       super(props);
       this.state = {
-        activeTab: Tab.OVERVIEW
+        activeTab: TabsType.OVERVIEW
       };
 
       this._handleTabClick = this._handleTabClick.bind(this);
@@ -24,4 +24,4 @@ const withSwitchableTabs = (Component) => {
   };
 };
 
-export default withSwitchableTabs;
+export default withActiveTab;

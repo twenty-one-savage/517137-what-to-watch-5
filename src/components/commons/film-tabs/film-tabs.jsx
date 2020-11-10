@@ -1,75 +1,55 @@
 import TabsOverview from "./tabs-overview/tabs-overview";
 import TabsDetails from "./tabs-details/tabs-details";
 import TabsReviews from "./tabs-reviews/tabs-reviews";
-import {Tab} from "../../../consts";
-
-const TABS = {
-  [Tab.OVERVIEW]: {
-    title: `Overview`,
-    type: Tab.OVERVIEW,
-  },
-  [Tab.DETAILS]: {
-    title: `Details`,
-    type: Tab.DETAILS,
-  },
-  [Tab.REVIEWS]: {
-    title: `Reviews`,
-    type: Tab.REVIEWS,
-  },
-};
+import {TabsType} from "../../../consts";
 
 const getTabContentByType = (tabType, film) => {
   switch (tabType) {
-    case Tab.OVERVIEW:
-      return <TabsOverview film={film} />;
-    case Tab.DETAILS:
+    case TabsType.OVERVIEW:
+      return <TabsOverview film={film}/>;
+    case TabsType.DETAILS:
       return <TabsDetails film={film}/>;
-    case Tab.REVIEWS:
+    case TabsType.REVIEWS:
       return <TabsReviews/>;
     default:
       return null;
   }
 };
 
-class FilmTabs extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.film = this.props.film;
-  }
+const FilmTabs = (props) => {
 
-  render() {
-    const {activeTab, tabClickHandler} = this.props;
-    const activeClass = `movie-nav__item--active`;
-    const tabs = Object.values(TABS);
+  const {film, activeTab, tabClickHandler} = props;
+  const activeClass = `movie-nav__item--active`;
+  const tabs = Object.entries(TabsType);
 
-    return (
-      <div className="movie-card__desc">
-        <nav className="movie-nav movie-card__nav">
-          <ul className="movie-nav__list">
-            {
-              tabs.map((tab, i) => (
-                <li key={`tab-${i}`} className={`movie-nav__item ${i === activeTab ? activeClass : ``}`}>
+  return (
+    <div className="movie-card__desc">
+      <nav className="movie-nav movie-card__nav">
+        <ul className="movie-nav__list">
+          {
+            tabs.map(([key, value]) => {
+              return (
+                <li key={key} className={`movie-nav__item ${value === activeTab ? activeClass : ``}`}>
                   <a
                     href="#"
                     className="movie-nav__link"
-                    data-tab={tab.type}
+                    data-tab={value}
                     onClick={tabClickHandler}
-                  >{tab.title}</a>
+                  >{value}</a>
                 </li>
-              ))
-            }
-          </ul>
-        </nav>
+              );
+            })}
+        </ul>
+      </nav>
 
-        {getTabContentByType(activeTab, this.film)}
+      {getTabContentByType(activeTab, film)}
 
-      </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 FilmTabs.propTypes = {
-  activeTab: PropTypes.oneOf([...Object.values(Tab)]).isRequired,
+  activeTab: PropTypes.string.isRequired,
   tabClickHandler: PropTypes.func.isRequired,
   film: PropTypes.shape({
     rating: PropTypes.shape({

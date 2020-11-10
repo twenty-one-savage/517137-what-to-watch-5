@@ -5,13 +5,13 @@ import Footer from "../../commons/sections/footer/footer";
 import FilmTabs from "../../commons/film-tabs/film-tabs";
 import ListSameFilms from "../../commons/lists/list-same-films/list-same-films";
 import BtnPlay from "../../commons/btnPlay/btnPlay";
-import withSwitchableTabs from "../../../hocs/with-active-tab/with-switchable-tabs";
+import withActiveTab from "../../../hocs/with-active-tab/with-active-tab";
 
 import {HeaderClasses} from "../../../consts";
 import filmScreenProp from "./film-screen.props";
 
 
-const FilmScreenWithSwitchableTabs = withSwitchableTabs(FilmTabs);
+const FilmScreenWithActiveTab = withActiveTab(FilmTabs);
 
 const FilmScreen = (props) => {
   const {films, film, btnPlayHandler} = props;
@@ -56,7 +56,7 @@ const FilmScreen = (props) => {
               <div className="movie-card__poster movie-card__poster--big">
                 <img src={poster} alt={title} width="218" height="327"/>
               </div>
-              <FilmScreenWithSwitchableTabs film={film}/>
+              <FilmScreenWithActiveTab film={film}/>
             </div>
           </div>
         </section>

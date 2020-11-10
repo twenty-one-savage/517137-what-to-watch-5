@@ -100,7 +100,6 @@ const withPlayer = (Component) => {
             onTimeUpdate={this._handleVideoTimeUpdate}
             poster={film.poster}
             src={film.video}
-            muted
           />
         </Component>
       );
