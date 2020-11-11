@@ -2,6 +2,9 @@ import FilmCard from "../../film-card/film-card";
 import BtnShowMore from "../../btn-show-more/btn-show-more";
 import {filmsType} from "../../../../commonPropTypes";
 import {Film} from "../../../../consts";
+import withHover from "../../../../hocs/with-hover/with-hover";
+
+const FilmCardWithHover = withHover(FilmCard);
 
 class ListFilms extends React.PureComponent {
   constructor(props) {
@@ -28,7 +31,7 @@ class ListFilms extends React.PureComponent {
       <>
         <div className="catalog__movies-list">
           {remains.map((film) => (
-            <FilmCard key={film.id} film={film}/>
+            <FilmCardWithHover key={film.id} film={film}/>
           ))}
         </div>
         {filmsCount > this.state.renderedFilmsCount && <BtnShowMore onClick={this._handleBtnShowMoreClick}/>}

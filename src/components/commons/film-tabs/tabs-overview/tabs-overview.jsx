@@ -1,7 +1,7 @@
 import tabsOverviewProps from "./tabs-overview.prop";
 
 const TabsOverview = (props) => {
-  const {rating, poll, producer, storyline, actors} = props;
+  const {rating, poll, producer, storyline, actors} = props.film;
   return (
     <>
       <div className="movie-rating">

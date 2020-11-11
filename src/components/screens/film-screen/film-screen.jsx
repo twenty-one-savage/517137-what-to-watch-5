@@ -1,17 +1,21 @@
 import {Link} from "react-router-dom";
+
 import Header from "../../commons/sections/header/header";
 import Footer from "../../commons/sections/footer/footer";
-import Tabs from "../../commons/tabs/tabs";
-import {filmsType} from "../../../commonPropTypes";
-import {HeaderClasses} from "../../../consts";
+import FilmTabs from "../../commons/film-tabs/film-tabs";
 import ListSameFilms from "../../commons/lists/list-same-films/list-same-films";
+import BtnPlay from "../../commons/btnPlay/btnPlay";
+import withActiveTab from "../../../hocs/with-active-tab/with-active-tab";
+
+import {HeaderClasses} from "../../../consts";
+import filmScreenProp from "./film-screen.props";
+
+
+const FilmScreenWithActiveTab = withActiveTab(FilmTabs);
 
 const FilmScreen = (props) => {
-  const {films, match} = props;
-  const filmId = match.params.id;
-
-  const currentFilm = films.find((film) => film.id === filmId);
-  const {title, poster, year, genres, background} = currentFilm;
+  const {films, film, btnPlayHandler} = props;
+  const {id, title, poster, year, genres, background} = film;
 
   return (
       <>
@@ -34,19 +38,14 @@ const FilmScreen = (props) => {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
-                    <svg viewBox="0 0 19 19" width="19" height="19">
-                      <use xlinkHref="#play-s" />
-                    </svg>
-                    <span>Play</span>
-                  </button>
+                  <BtnPlay id={id} btnPlayHandler={btnPlayHandler}/>
                   <button className="btn btn--list movie-card__button" type="button">
                     <svg viewBox="0 0 19 20" width="19" height="20">
                       <use xlinkHref="#add" />
                     </svg>
                     <span>My list</span>
                   </button>
-                  <Link to={`/films/${filmId}/review`} className="btn movie-card__button">Add review</Link>
+                  <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
                 </div>
               </div>
             </div>
@@ -57,7 +56,7 @@ const FilmScreen = (props) => {
               <div className="movie-card__poster movie-card__poster--big">
                 <img src={poster} alt={title} width="218" height="327"/>
               </div>
-              <Tabs film={currentFilm}/>
+              <FilmScreenWithActiveTab film={film}/>
             </div>
           </div>
         </section>
@@ -75,6 +74,6 @@ const FilmScreen = (props) => {
   );
 };
 
-FilmScreen.propTypes = filmsType;
+FilmScreen.propTypes = filmScreenProp;
 
 export default FilmScreen;

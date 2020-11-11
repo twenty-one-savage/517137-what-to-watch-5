@@ -1,14 +1,14 @@
 import ListFilms from "../../commons/lists/list-films/list-films.connect";
 import ListGenres from "../../commons/lists/list-genres/list-genres.connect";
-import {filmsType} from "../../../commonPropTypes";
 import Footer from "../../commons/sections/footer/footer";
 import Header from "../../commons/sections/header/header";
 import {HeaderClasses} from "../../../consts";
+import BtnPlay from "../../commons/btnPlay/btnPlay";
+import {filmsType} from "../../../commonPropTypes";
 
 const MainScreen = (props) => {
-  const {films} = props;
-  const [firstFilm] = films;
-  const {poster, background, title, genres, year} = firstFilm;
+  const {film, btnPlayHandler} = props;
+  const {id, poster, background, title, genres, year} = film;
   return (
     <>
       <div className="visually-hidden">
@@ -65,12 +65,7 @@ const MainScreen = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s" />
-                  </svg>
-                  <span>Play</span>
-                </button>
+                <BtnPlay btnPlayHandler={btnPlayHandler} id={id}/>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add" />
@@ -96,6 +91,17 @@ const MainScreen = (props) => {
   );
 };
 
-MainScreen.propTypes = filmsType;
+MainScreen.propTypes = {
+  films: filmsType,
+  film: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    background: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+    year: PropTypes.string.isRequired
+  }).isRequired,
+  btnPlayHandler: PropTypes.func.isRequired,
+};
 
 export default MainScreen;

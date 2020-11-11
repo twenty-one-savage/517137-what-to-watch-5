@@ -2,14 +2,31 @@ import {Link} from "react-router-dom";
 import VideoPlayer from "../video-player/video-player";
 import filmCardProps from "./film-card.prop";
 
+
 const FilmCard = (props) => {
-  const {film} = props;
-  const {id, poster, title, video} = film;
+  const {
+    film,
+    onMouseOver,
+    onMouseOut,
+    isPlaying
+  } = props;
+
+  const {
+    id,
+    poster,
+    title,
+    video
+  } = film;
 
   return (
-    <article className="small-movie-card catalog__movies-card">
+    <article className="small-movie-card catalog__movies-card" onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
       <Link to={`/films/${id}`}>
-        <VideoPlayer className="small-movie-card__image" videoSrc={video} isPlaying={false} posterSrc={poster} />
+        <div className="small-movie-card__image">
+          {isPlaying ?
+            (<VideoPlayer videoSrc={video} posterSrc={poster} />) :
+            (<img src={poster} alt={title} width="280" height="175" />)
+          }
+        </div>
       </Link>
       <h3 className="small-movie-card__title">
         <Link to={`/films/${id}`} className="small-movie-card__link">{title}</Link>

@@ -1,7 +1,7 @@
 import tabsDetailsProps from "./tabs-details.props";
 
 const TabsDetails = (props) => {
-  const {producer, actors, duration, genres, year} = props;
+  const {producer, actors, duration, genres, year} = props.film;
   return (
     <div className="movie-card__text movie-card__row">
       <div className="movie-card__text-col">
