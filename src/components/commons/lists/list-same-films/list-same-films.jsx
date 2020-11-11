@@ -2,6 +2,9 @@ import FilmCard from "../../film-card/film-card";
 import {getFilmsByGenre} from "../../../../store/selectors/getFilmsByGenre";
 import listSameFilmsProps from "./list-same-films.prop";
 import {Film} from "../../../../consts";
+import withHover from "../../../../hocs/with-hover/with-hover";
+
+const FilmCardWithHover = withHover(FilmCard);
 
 const ListSameFilms = (props) => {
   const {films, genre} = props;
@@ -9,7 +12,7 @@ const ListSameFilms = (props) => {
   return (
     <div className="catalog__movies-list">
       {filteredFilms.map((film) => (
-        <FilmCard film={film} key={film.id} />
+        <FilmCardWithHover film={film} key={film.id} />
       ))}
     </div>
   );

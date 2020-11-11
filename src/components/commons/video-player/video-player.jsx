@@ -1,22 +1,16 @@
 import videoPlayerProp from "./video-player.prop";
 
-class VideoPlayer extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this._videoRef = React.createRef();
-  }
-
-  render() {
-    const {videoSrc, posterSrc} = this.props;
-    return (
-      <video
-        ref={this._videoRef}
-        src={videoSrc}
-        poster={posterSrc}
-      />
-    );
-  }
-}
+const VideoPlayer = (props) => {
+  const {videoSrc, posterSrc} = props;
+  return (
+    <video
+      src={videoSrc}
+      poster={posterSrc}
+      autoPlay
+      muted
+    />
+  );
+};
 
 VideoPlayer.propTypes = videoPlayerProp;
 
