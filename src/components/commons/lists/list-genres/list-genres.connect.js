@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {ActionCreator} from "../../../../store/action";
+import {changeActiveFilter} from "../../../../store/action";
 import ListGenres from "./list-genres";
 
 export const mapStateToProps = (state) => ({
@@ -9,7 +9,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   changeActiveFilter(genreForFilter) {
-    dispatch(ActionCreator.changeActiveFilter(genreForFilter));
+    dispatch(changeActiveFilter(genreForFilter));
   }
 });
 

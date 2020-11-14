@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom";
 import App from "./components/commons/app/app";
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
-import {reducer} from "./store/reducer";
-
+import thunk from "redux-thunk";
+import rootReducer from "./store/reducers/root-reducer";
 const store = createStore(
-    reducer,
+    rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 

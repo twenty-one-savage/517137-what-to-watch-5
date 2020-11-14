@@ -42,7 +42,7 @@ const App = (props) => {
         />
         <Route
           exact
-          path="/films/:id?"
+          path="/films/:id"
           render={({match, history}) => (
             <FilmScreen
               film={getMatchingFilm(films, match)}
