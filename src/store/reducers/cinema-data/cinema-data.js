@@ -1,9 +1,8 @@
 import {extend} from "../../../utils/common";
 import {ActionType} from "../../action";
-import {allFilms} from "../../../mocks/films";
 
 const initialState = {
-  films: allFilms
+  films: []
 };
 
 const cinemaData = (state = initialState, action) => {

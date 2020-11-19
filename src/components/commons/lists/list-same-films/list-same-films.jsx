@@ -1,5 +1,5 @@
 import FilmCard from "../../film-card/film-card";
-import {getFilmsByGenre} from "../../../../store/selectors/getFilmsByGenre";
+import {getFilmsByGenre} from "../../../../store/selectors";
 import listSameFilmsProps from "./list-same-films.prop";
 import {Film} from "../../../../consts";
 import withHover from "../../../../hocs/with-hover/with-hover";

@@ -10,7 +10,6 @@ const getUniqueGenresArray = (films) => {
 const genres = getUniqueGenresArray(allFilms);
 
 const initialState = {
-  films: allFilms,
   genres,
   activeGenre: FilmGenres.ALL_GENRES
 };

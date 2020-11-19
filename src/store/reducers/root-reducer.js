@@ -4,9 +4,9 @@ import {cinemaData} from "./cinema-data/cinema-data";
 import {cinemaProcess} from "./cinema-process/cinema-process";
 
 export const NameSpace = {
+  USER: `USER`,
   DATA: `DATA`,
   CINEMA: `CINEMA`,
-  USER: `USER`,
 };
 
 export default combineReducers({
