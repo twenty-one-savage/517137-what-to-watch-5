@@ -1,11 +1,11 @@
 export default {
-  film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    video: PropTypes.string.isRequired
+  "film": PropTypes.shape({
+    "id": PropTypes.number.isRequired,
+    "name": PropTypes.string.isRequired,
+    "preview_image": PropTypes.string.isRequired,
+    "preview_video_link": PropTypes.string.isRequired
   }).isRequired,
-  onMouseOver: PropTypes.func.isRequired,
-  onMouseOut: PropTypes.func.isRequired,
-  isPlaying: PropTypes.bool.isRequired
+  "onMouseOver": PropTypes.func.isRequired,
+  "onMouseOut": PropTypes.func.isRequired,
+  "isPlaying": PropTypes.bool.isRequired
 };

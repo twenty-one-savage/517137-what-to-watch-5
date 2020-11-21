@@ -1,7 +1,9 @@
 import listGenreProps from "./list-genres.prop";
+import {getUniqueGenresArray} from "../../../../store/selectors";
 
 const ListGenres = (props) => {
-  const {genres, activeGenre, changeActiveFilter} = props;
+  const {films, activeGenre, changeActiveFilter} = props;
+  const genres = getUniqueGenresArray(films);
   return (
     <ul className="catalog__genres-list">
       {genres.map((genre, i) =>

@@ -1,8 +1,8 @@
 import {connect} from "react-redux";
-import FilmScreen from "./film-screen";
+import ListSameFilms from "./list-same-films";
 
 const mapStateToProps = (state) => ({
   films: state.DATA.films
 });
 
-export default connect(mapStateToProps)(FilmScreen);
+export default connect(mapStateToProps)(ListSameFilms);

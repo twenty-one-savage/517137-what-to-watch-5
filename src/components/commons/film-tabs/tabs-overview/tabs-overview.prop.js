@@ -1,13 +1,10 @@
 const tabsOverviewProps = {
-  film: PropTypes.shape({
-    rating: PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      tag: PropTypes.string.isRequired
-    }).isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    poll: PropTypes.number.isRequired,
-    producer: PropTypes.string.isRequired,
-    storyline: PropTypes.string.isRequired
+  "film": PropTypes.shape({
+    "rating": PropTypes.number.isRequired,
+    "starring": PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    "scores_count": PropTypes.number.isRequired,
+    "director": PropTypes.string.isRequired,
+    "description": PropTypes.string.isRequired
   }).isRequired
 };
 

@@ -4,11 +4,18 @@ import Footer from "../../commons/sections/footer/footer";
 import Header from "../../commons/sections/header/header";
 import {HeaderClasses} from "../../../consts";
 import BtnPlay from "../../commons/btnPlay/btnPlay";
-import {filmsType} from "../../../commonPropTypes";
+import mainScreenProp from "./main-screen.prop";
 
 const MainScreen = (props) => {
   const {film, btnPlayHandler} = props;
-  const {id, poster, background, title, genres, year} = film;
+  const {
+    id,
+    poster_image: posterImage,
+    background_image: backgroundImage,
+    name,
+    genre,
+    released
+  } = film;
   return (
     <>
       <div className="visually-hidden">
@@ -44,7 +51,7 @@ const MainScreen = (props) => {
 
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={background} alt={title}/>
+          <img src={backgroundImage} alt={name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -54,14 +61,14 @@ const MainScreen = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={poster} alt={title} width="218" height="327"/>
+              <img src={posterImage} alt={name} width="218" height="327"/>
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{title}</h2>
+              <h2 className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genres[0]}</span>
-                <span className="movie-card__year">{year}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{released}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -91,17 +98,6 @@ const MainScreen = (props) => {
   );
 };
 
-MainScreen.propTypes = {
-  films: filmsType,
-  film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    background: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-    year: PropTypes.string.isRequired
-  }).isRequired,
-  btnPlayHandler: PropTypes.func.isRequired,
-};
+MainScreen.propTypes = mainScreenProp;
 
 export default MainScreen;

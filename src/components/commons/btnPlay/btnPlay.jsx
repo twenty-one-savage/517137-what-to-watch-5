@@ -1,4 +1,4 @@
-import btnPlayProp from "./btnPlay.props";
+import btnPlayProp from "./btnPlay.prop";
 
 const BtnPlay = (props) => {
   const {id, btnPlayHandler} = props;

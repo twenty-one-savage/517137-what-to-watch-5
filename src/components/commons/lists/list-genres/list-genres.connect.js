@@ -3,8 +3,8 @@ import {changeActiveFilter} from "../../../../store/action";
 import ListGenres from "./list-genres";
 
 const mapStateToProps = (state) => ({
-  genres: state.genres,
-  activeGenre: state.activeGenre
+  films: state.DATA.films,
+  activeGenre: state.CINEMA.activeGenre
 });
 
 const mapDispatchToProps = (dispatch) => ({

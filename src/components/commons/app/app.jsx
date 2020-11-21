@@ -5,7 +5,7 @@ import FilmScreen from "../../screens/film-screen/film-screen.connect";
 import MyListScreen from "../../screens/my-list-screen/my-list-screen.connect";
 import PlayerScreen from "../../screens/player-screen/player-screen";
 import SignInScreen from "../../screens/sign-in-screen/sign-in-screen.connect";
-import PrivateRoute from "../../service/private-route/private-route.connect";
+import PrivateRoute from "../../services/private-route/private-route.connect";
 import {filmsType} from "../../../commonPropTypes";
 import {getMatchingFilm} from "../../../utils/common";
 import browserHistory from "../../../browser-history";
@@ -15,7 +15,6 @@ const PlayerWrapped = withPlayer(PlayerScreen);
 
 const App = (props) => {
   const {films} = props;
-  console.log(films);
   return (
     <BrowserRouter history={browserHistory}>
       <Switch>
@@ -51,7 +50,7 @@ const App = (props) => {
         <Route
           exact
           path="/films/:id?"
-          render={({match, history}) => (
+          render={({history, match}) => (
             <FilmScreen
               film={getMatchingFilm(films, match)}
               btnPlayHandler={(id) => history.push(`/player/${id}`)}
