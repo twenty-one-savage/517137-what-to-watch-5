@@ -1,7 +1,5 @@
-import {filmsType} from "../../../../commonPropTypes";
-
 export default {
-  "films": filmsType,
+  "genres": PropTypes.arrayOf(PropTypes.string).isRequired,
   "activeGenre": PropTypes.string.isRequired,
   "changeActiveFilter": PropTypes.func.isRequired
 };

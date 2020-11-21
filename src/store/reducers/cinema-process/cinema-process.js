@@ -3,6 +3,7 @@ import {ActionType} from "../../action";
 import {FilmGenres} from "../../../consts";
 
 const initialState = {
+  genres: [],
   activeGenre: FilmGenres.ALL_GENRES
 };
 
