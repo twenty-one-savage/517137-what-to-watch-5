@@ -21,15 +21,22 @@ const store = createStore(
     )
 );
 
-Promise.all([
-  store.dispatch(fetchFilmList()),
-  store.dispatch(checkAuth())
-])
-  .then(() => {
-    ReactDOM.render(
-        <Provider store={store}>
-          <App/>
-        </Provider>,
-        document.querySelector(`#root`)
-    );
-  });
+ReactDOM.render(
+    <Provider store={store}>
+      <App store={store}/>
+    </Provider>,
+    document.querySelector(`#root`)
+);
+
+// Promise.all([
+//   store.dispatch(fetchFilmList()),
+//   store.dispatch(checkAuth())
+// ])
+//   .then(() => {
+//     ReactDOM.render(
+//         <Provider store={store}>
+//           <App store={store}/>
+//         </Provider>,
+//         document.querySelector(`#root`)
+//     );
+//   });
