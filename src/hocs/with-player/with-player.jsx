@@ -86,7 +86,7 @@ const withPlayer = (Component) => {
         <Component
           {...this.props}
           isPlaying={isPlaying}
-          title={film.title}
+          name={film.name}
           videoCurrentTime={videoCurrentTime}
           progressBarPosition={progressBarPosition}
           handlePlayerExitClick={handlePlayerExitClick}
@@ -98,8 +98,8 @@ const withPlayer = (Component) => {
             ref={this._videoRef}
             className="player__video"
             onTimeUpdate={this._handleVideoTimeUpdate}
-            poster={film.poster}
-            src={film.video}
+            poster={film.poster_image}
+            src={film.video_link}
           />
         </Component>
       );
@@ -107,12 +107,12 @@ const withPlayer = (Component) => {
   }
 
   WithPlayer.propTypes = {
-    film: PropTypes.shape({
-      poster: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      video: PropTypes.string.isRequired
+    "film": PropTypes.shape({
+      "poster_image": PropTypes.string.isRequired,
+      "name": PropTypes.string.isRequired,
+      "video_link": PropTypes.string.isRequired,
     }).isRequired,
-    handlePlayerExitClick: PropTypes.func.isRequired
+    "handlePlayerExitClick": PropTypes.func.isRequired
   };
 
   return WithPlayer;

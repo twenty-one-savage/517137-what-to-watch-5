@@ -1,15 +1,16 @@
 import {connect} from "react-redux";
-import {ActionCreator} from "../../../../store/action";
+import {changeActiveFilter} from "../../../../store/action";
 import ListGenres from "./list-genres";
+import {getGenres} from "../../../../store/selectors";
 
-export const mapStateToProps = (state) => ({
-  genres: state.genres,
-  activeGenre: state.activeGenre
+const mapStateToProps = (state) => ({
+  genres: getGenres(state),
+  activeGenre: state.CINEMA.activeGenre
 });
 
-export const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   changeActiveFilter(genreForFilter) {
-    dispatch(ActionCreator.changeActiveFilter(genreForFilter));
+    dispatch(changeActiveFilter(genreForFilter));
   }
 });
 

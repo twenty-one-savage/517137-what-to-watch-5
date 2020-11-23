@@ -1,4 +1,3 @@
-import {Film} from "../consts";
 import {generateGuid, getRandomInteger, getRandomArrayElement, getFewRandomArrayElements} from "../utils/common";
 import momentRandom from "moment-random";
 
@@ -103,7 +102,7 @@ const generateFilmDuration = () => {
   };
 };
 
-const generateFilmRating = () => {
+const generateFilmRating = (value) => {
   const tags = {
     bad: `Bad`,
     normal: `Normal`,
@@ -113,8 +112,6 @@ const generateFilmRating = () => {
   };
 
   let tag = null;
-
-  let value = (Math.random() * (Film.RATING.max)).toFixed(1);
 
   if (value <= 3) {
     tag = tags.bad;
@@ -126,10 +123,7 @@ const generateFilmRating = () => {
     tag = tags.awesome;
   }
 
-  return {
-    value,
-    tag
-  };
+  return tag;
 };
 
 const generateFilm = () => {

@@ -3,26 +3,33 @@ import {Link} from "react-router-dom";
 import Header from "../../commons/sections/header/header";
 import Footer from "../../commons/sections/footer/footer";
 import FilmTabs from "../../commons/film-tabs/film-tabs";
-import ListSameFilms from "../../commons/lists/list-same-films/list-same-films";
+import ListSameFilms from "../../commons/lists/list-same-films/list-same-films.connect";
 import BtnPlay from "../../commons/btnPlay/btnPlay";
 import withActiveTab from "../../../hocs/with-active-tab/with-active-tab";
 
 import {HeaderClasses} from "../../../consts";
-import filmScreenProp from "./film-screen.props";
+import filmScreenProp from "./film-screen.prop";
 
 
 const FilmScreenWithActiveTab = withActiveTab(FilmTabs);
 
 const FilmScreen = (props) => {
-  const {films, film, btnPlayHandler} = props;
-  const {id, title, poster, year, genres, background} = film;
+  const {film, btnPlayHandler} = props;
+  const {
+    id,
+    name,
+    poster_image: posterImage,
+    released,
+    genre,
+    background_image: backgroundImage
+  } = film;
 
   return (
       <>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <div className="movie-card__bg">
-              <img src={background} alt={title}/>
+              <img src={backgroundImage} alt={name}/>
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -31,10 +38,10 @@ const FilmScreen = (props) => {
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">{title}</h2>
+                <h2 className="movie-card__title">{name}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">{genres.join(`, `)}</span>
-                  <span className="movie-card__year">{year}</span>
+                  <span className="movie-card__genre">{genre}</span>
+                  <span className="movie-card__year">{released}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -54,7 +61,7 @@ const FilmScreen = (props) => {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
-                <img src={poster} alt={title} width="218" height="327"/>
+                <img src={posterImage} alt={name} width="218" height="327"/>
               </div>
               <FilmScreenWithActiveTab film={film}/>
             </div>
@@ -65,7 +72,7 @@ const FilmScreen = (props) => {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <ListSameFilms films={films} genre={genres[0]}/>
+            <ListSameFilms genre={genre}/>
           </section>
 
           <Footer />

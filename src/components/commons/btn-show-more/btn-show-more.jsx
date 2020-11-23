@@ -1,3 +1,5 @@
+import btnShowMoreProp from "./btn-show-more.prop.js";
+
 const BtnShowMore = (props) => {
   return (
     <div className="catalog__more">
@@ -6,8 +8,6 @@ const BtnShowMore = (props) => {
   );
 };
 
-BtnShowMore.propTypes = {
-  onClick: PropTypes.func.isRequired
-};
+BtnShowMore.propTypes = btnShowMoreProp;
 
 export default BtnShowMore;

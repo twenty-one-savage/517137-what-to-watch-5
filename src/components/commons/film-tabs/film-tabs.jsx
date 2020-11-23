@@ -3,6 +3,8 @@ import TabsDetails from "./tabs-details/tabs-details";
 import TabsReviews from "./tabs-reviews/tabs-reviews";
 import {TabsType} from "../../../consts";
 
+import filmTabsProp from "./film-tabs.prop";
+
 const getTabContentByType = (tabType, film) => {
   switch (tabType) {
     case TabsType.OVERVIEW:
@@ -48,25 +50,6 @@ const FilmTabs = (props) => {
   );
 };
 
-FilmTabs.propTypes = {
-  activeTab: PropTypes.string.isRequired,
-  tabClickHandler: PropTypes.func.isRequired,
-  film: PropTypes.shape({
-    rating: PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      tag: PropTypes.string.isRequired
-    }).isRequired,
-    poll: PropTypes.number.isRequired,
-    producer: PropTypes.string.isRequired,
-    storyline: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    duration: PropTypes.shape({
-      hours: PropTypes.string.isRequired,
-      minutes: PropTypes.string.isRequired
-    }).isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    year: PropTypes.string.isRequired
-  }).isRequired,
-};
+FilmTabs.propTypes = filmTabsProp;
 
 export default FilmTabs;

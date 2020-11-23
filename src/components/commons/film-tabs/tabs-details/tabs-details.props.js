@@ -1,13 +1,10 @@
 const tabsDetailsProps = {
-  film: PropTypes.shape({
-    producer: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    duration: PropTypes.shape({
-      hours: PropTypes.string.isRequired,
-      minutes: PropTypes.string.isRequired
-    }).isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string.isRequired),
-    year: PropTypes.string.isRequired
+  "film": PropTypes.shape({
+    "director": PropTypes.string.isRequired,
+    "starring": PropTypes.arrayOf(PropTypes.string).isRequired,
+    "run_time": PropTypes.number.isRequired,
+    "genre": PropTypes.string.isRequired,
+    "released": PropTypes.number.isRequired
   }).isRequired
 };
 

@@ -20,13 +20,14 @@ export const getRandomArrayElement = (arr) => {
 
 export const getFewRandomArrayElements = (arr) => {
   return arr
-    .sort(()=> 0.5 - Math.random())
+    .sort(() => 0.5 - Math.random())
     .slice(getRandomInteger(0, arr.length - 1));
 };
 
 export const clearAllTimeouts = () => {
   let maxId;
-  maxId = setTimeout(function () {});
+  maxId = setTimeout(function () {
+  });
   while (maxId--) {
     clearTimeout(maxId);
   }
@@ -49,4 +50,28 @@ export const getFormattedTime = (time) => {
 
 export const getVideoProgress = (video) => (Math.floor(video.currentTime) / (Math.floor(video.duration) / 100));
 
-export const getMatchingFilm = (films, {params}) => films.find((item) => item.id === (params.id));
+export const getMatchingFilm = (films, {params}) => films.find((item) => item.id === +(params.id));
+
+export const createRatingTag = (value) => {
+  const tags = {
+    bad: `Bad`,
+    normal: `Normal`,
+    good: `Good`,
+    veryGood: `Very good`,
+    awesome: `Awesome`
+  };
+
+  let tag = null;
+
+  if (value <= 3) {
+    tag = tags.bad;
+  } else if (value > 3 && value <= 5) {
+    tag = tags.normal;
+  } else if (value > 5 && value <= 8) {
+    tag = tags.veryGood;
+  } else if (value > 8) {
+    tag = tags.awesome;
+  }
+
+  return tag;
+};

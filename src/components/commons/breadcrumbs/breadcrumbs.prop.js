@@ -1,5 +1,5 @@
 export default {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  "id": PropTypes.number.isRequired,
+  "name": PropTypes.string.isRequired
 };
 

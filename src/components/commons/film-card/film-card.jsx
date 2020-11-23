@@ -13,9 +13,9 @@ const FilmCard = (props) => {
 
   const {
     id,
-    poster,
-    title,
-    video
+    preview_image: previewImage,
+    name,
+    preview_video_link: previewVideoLink
   } = film;
 
   return (
@@ -23,13 +23,13 @@ const FilmCard = (props) => {
       <Link to={`/films/${id}`}>
         <div className="small-movie-card__image">
           {isPlaying ?
-            (<VideoPlayer videoSrc={video} posterSrc={poster} />) :
-            (<img src={poster} alt={title} width="280" height="175" />)
+            (<VideoPlayer videoSrc={previewVideoLink} posterSrc={previewImage} />) :
+            (<img src={previewImage} alt={name} width="280" height="175" />)
           }
         </div>
       </Link>
       <h3 className="small-movie-card__title">
-        <Link to={`/films/${id}`} className="small-movie-card__link">{title}</Link>
+        <Link to={`/films/${id}`} className="small-movie-card__link">{name}</Link>
       </h3>
     </article>
   );
