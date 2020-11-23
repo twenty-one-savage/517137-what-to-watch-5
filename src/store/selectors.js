@@ -7,7 +7,7 @@ export const getFilmsByGenre = (list, genre) => {
   }));
 };
 
-export const getUniqueGenresArray = (films) => ([
+const getUniqueGenresArray = (films) => ([
   FilmGenres.ALL_GENRES, ...new Set(films.map((film) => (film.genre)))
 ]);
 
@@ -15,7 +15,5 @@ const getFilms = (state) => state.DATA.films;
 
 export const getGenres = createSelector(
     [getFilms],
-    (films) => ([
-      FilmGenres.ALL_GENRES, ...new Set(films.map((film) => (film.genre)))
-    ])
+    (films) => (getUniqueGenresArray(films))
 );
