@@ -1,6 +1,7 @@
 import {filmsType} from "../../../commonPropTypes";
 
 export default {
-  films: filmsType,
-  store: PropTypes.object.isRequired
+  "films": filmsType,
+  "isApplicationReady": PropTypes.bool.isRequired,
+  "init": PropTypes.func.isRequired
 };

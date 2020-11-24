@@ -9,88 +9,27 @@ import PrivateRoute from "../../services/private-route/private-route.connect";
 import {getMatchingFilm} from "../../../utils/common";
 import browserHistory from "../../../browser-history";
 import withPlayer from "../../../hocs/with-player/with-player";
-import {checkAuth, fetchFilmList} from "../../../store/api-actions";
 import appProp from "./app.prop";
 
 const PlayerWrapped = withPlayer(PlayerScreen);
 
-// const App = (props) => {
-//   const {films} = props;
-//   return (
-//     <BrowserRouter history={browserHistory}>
-//       <Switch>
-//         <Route
-//           exact
-//           path="/"
-//           render={({history}) => (
-//             <MainScreen
-//               film={films[0]}
-//               btnPlayHandler={(id) => history.push(`/player/${id}`)}
-//             />
-//           )}
-//         />
-//         <Route exact path="/login">
-//           <SignInScreen />
-//         </Route>
-//         <PrivateRoute
-//           exact
-//           path={`/mylist`}
-//           render={() => {
-//             return (
-//               <MyListScreen/>
-//             );
-//           }}
-//         />
-//         <Route
-//           exact
-//           path="/films/:id/review"
-//           render={(params) => (
-//             <AddReviewScreen {...params} />
-//           )}
-//         />
-//         <Route
-//           exact
-//           path="/films/:id?"
-//           render={({history, match}) => (
-//             <FilmScreen
-//               film={getMatchingFilm(films, match)}
-//               btnPlayHandler={(id) => history.push(`/player/${id}`)}
-//             />
-//           )}
-//         />
-//         <Route
-//           exact
-//           path="/player/:id"
-//           render={({match, history}) => (
-//             <PlayerWrapped
-//               film={getMatchingFilm(films, match)}
-//               handlePlayerExitClick={() => history.goBack()}
-//             />
-//           )}
-//         />
-//       </Switch>
-//     </BrowserRouter>
-//   );
-// };
-
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
-    // Здесь я хотел добиться деструктуризации
-    // const {films, store} = this.props;
-    // Object.assign(this, {films, store});
-    this.films = this.props.films;
-    this.store = this.props.store;
+    this.init = this.props.init;
   }
 
   componentDidMount() {
-    Promise.all([
-      this.store.dispatch(fetchFilmList()),
-      this.store.dispatch(checkAuth()),
-    ]);
+    this.init();
   }
 
   render() {
+    const {films, isApplicationReady} = this.props;
+
+    if (!isApplicationReady) {
+      return null;
+    }
+
     return (
       <BrowserRouter history={browserHistory}>
         <Switch>
@@ -99,7 +38,7 @@ class App extends React.PureComponent {
             path="/"
             render={({history}) => (
               <MainScreen
-                film={this.films[0]}
+                film={films[0]}
                 btnPlayHandler={(id) => history.push(`/player/${id}`)}
               />
             )}
@@ -116,7 +55,7 @@ class App extends React.PureComponent {
               );
             }}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/films/:id/review"
             render={(params) => (
@@ -128,7 +67,7 @@ class App extends React.PureComponent {
             path="/films/:id?"
             render={({history, match}) => (
               <FilmScreen
-                film={getMatchingFilm(this.films, match)}
+                film={getMatchingFilm(films, match)}
                 btnPlayHandler={(id) => history.push(`/player/${id}`)}
               />
             )}
@@ -138,7 +77,7 @@ class App extends React.PureComponent {
             path="/player/:id"
             render={({match, history}) => (
               <PlayerWrapped
-                film={getMatchingFilm(this.films, match)}
+                film={getMatchingFilm(films, match)}
                 handlePlayerExitClick={() => history.goBack()}
               />
             )}

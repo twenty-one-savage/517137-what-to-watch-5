@@ -5,7 +5,7 @@ const initialState = {
   films: []
 };
 
-const cinemaData = (state = initialState, action) => {
+const data = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_FILMS:
       return extend(state, {
@@ -16,4 +16,4 @@ const cinemaData = (state = initialState, action) => {
   }
 };
 
-export {cinemaData};
+export {data};

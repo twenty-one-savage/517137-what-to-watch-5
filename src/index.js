@@ -4,9 +4,8 @@ import {createStore, applyMiddleware} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
-import {createAPI} from "./services/api";
+import {createAPI} from "./services/api/api";
 import {requiredAuthorization} from "./store/action";
-import {fetchFilmList, checkAuth} from "./store/api-actions";
 import {AuthorizationStatus} from "./consts";
 import rootReducer from "./store/reducers/root-reducer";
 import {redirect} from "./store/middlewares/redirect";
@@ -23,20 +22,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-      <App store={store}/>
+      <App/>
     </Provider>,
     document.querySelector(`#root`)
 );
-
-// Promise.all([
-//   store.dispatch(fetchFilmList()),
-//   store.dispatch(checkAuth())
-// ])
-//   .then(() => {
-//     ReactDOM.render(
-//         <Provider store={store}>
-//           <App store={store}/>
-//         </Provider>,
-//         document.querySelector(`#root`)
-//     );
-//   });
