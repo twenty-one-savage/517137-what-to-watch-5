@@ -1,5 +1,5 @@
 import {setFilms, requiredAuthorization, redirectToRoute, setApplicationReady} from "./action";
-import {AuthorizationStatus, APIRoute} from "../consts";
+import {AuthorizationStatus, APIRoute, AppRoute} from "../consts";
 
 export const fetchFilmList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
@@ -16,5 +16,5 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
     .then(() => dispatch(requiredAuthorization(AuthorizationStatus.AUTH)))
-    .then(() => dispatch(redirectToRoute(`/`)))
+    .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
 );

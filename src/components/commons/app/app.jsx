@@ -55,7 +55,7 @@ class App extends React.PureComponent {
               );
             }}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/films/:id/review"
             render={(params) => (

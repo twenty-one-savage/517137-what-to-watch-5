@@ -56,3 +56,8 @@ export const APIRoute = {
   FILMS: `/films`,
   LOGIN: `/login`
 };
+
+export const HttpCode = {
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+};
