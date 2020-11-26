@@ -1,6 +1,6 @@
 import axios from "axios";
-import {HttpCode} from "../../consts";
-
+import browserHistory from "../../browser-history";
+import {AppRoute, HttpCode} from "../../consts";
 const BACKEND_URL = `https://5.react.pages.academy/wtw`;
 const REQUEST_TIMEOUT = 5000;
 
@@ -15,6 +15,11 @@ export const createAPI = (onUnauthorized) => {
 
   const onFail = (err) => {
     const {response} = err;
+
+    if (response.status === HttpCode.NOT_FOUND || response.status >= HttpCode.SERVER_ERROR) {
+      browserHistory.push(AppRoute.ERROR);
+      throw err;
+    }
 
     if (response.status === HttpCode.UNAUTHORIZED) {
       onUnauthorized();

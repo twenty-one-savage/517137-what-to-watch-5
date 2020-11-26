@@ -30,6 +30,10 @@ export const HeaderClasses = {
   MOVIE_CARD_HEAD: `movie-card__head`
 };
 
+export const LogoClasses = {
+  LOGO_LINK_LIGHT: `logo__link--light`
+};
+
 export const HeaderTitles = {
   MY_LIST: `My list`,
   SIGN_IN: `Sign in`
@@ -50,14 +54,19 @@ export const AppRoute = {
   ROOT: `/`,
   MY_LIST: `/mylist`,
   LOGIN: `/login`,
+  FILMS: `/films/`
 };
 
 export const APIRoute = {
   FILMS: `/films`,
-  LOGIN: `/login`
+  LOGIN: `/login`,
+  COMMENTS: `/comments/`
 };
 
 export const HttpCode = {
+  SUCCESS: 200,
   BAD_REQUEST: 400,
   UNAUTHORIZED: 401,
+  NOT_FOUND: 404,
+  SERVER_ERROR: 500
 };

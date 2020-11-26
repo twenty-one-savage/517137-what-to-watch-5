@@ -10,17 +10,15 @@ import {getMatchingFilm} from "../../../utils/common";
 import browserHistory from "../../../browser-history";
 import withPlayer from "../../../hocs/with-player/with-player";
 import appProp from "./app.prop";
+import NotFound from "../../screens/404/404";
+import withUserReview from "../../../hocs/with-user-review/with-user-review";
 
 const PlayerWrapped = withPlayer(PlayerScreen);
+const AddReviewScreenWrapped = withUserReview(AddReviewScreen);
 
 class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.init = this.props.init;
-  }
-
   componentDidMount() {
-    this.init();
+    this.props.initApplication();
   }
 
   render() {
@@ -38,7 +36,6 @@ class App extends React.PureComponent {
             path="/"
             render={({history}) => (
               <MainScreen
-                film={films[0]}
                 btnPlayHandler={(id) => history.push(`/player/${id}`)}
               />
             )}
@@ -48,7 +45,7 @@ class App extends React.PureComponent {
           </Route>
           <PrivateRoute
             exact
-            path={`/mylist`}
+            path="/mylist"
             render={() => {
               return (
                 <MyListScreen/>
@@ -58,8 +55,10 @@ class App extends React.PureComponent {
           <PrivateRoute
             exact
             path="/films/:id/review"
-            render={(params) => (
-              <AddReviewScreen {...params} />
+            render={({match}) => (
+              <AddReviewScreenWrapped
+                film={getMatchingFilm(films, match)}
+              />
             )}
           />
           <Route
@@ -82,6 +81,11 @@ class App extends React.PureComponent {
               />
             )}
           />
+          <Route
+            path="*"
+            component={NotFound}
+          />
+
         </Switch>
       </BrowserRouter>
     );

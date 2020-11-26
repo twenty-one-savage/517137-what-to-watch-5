@@ -1,8 +1,11 @@
 import {connect} from "react-redux";
 import AddReviewScreen from "./add-review-screen";
+import {addReview} from "../../../store/api-actions";
 
-const mapStateToProps = (state) => ({
-  films: state.DATA.films
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit(filmId, authData) {
+    dispatch(addReview(filmId, authData));
+  }
 });
 
-export default connect(mapStateToProps)(AddReviewScreen);
+export default connect(null, mapDispatchToProps)(AddReviewScreen);

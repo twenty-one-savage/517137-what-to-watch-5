@@ -1,19 +1,14 @@
 import {connect} from "react-redux";
 import App from "./app";
-import {checkAuth, fetchFilmList} from "../../../store/api-actions";
+import {initApplication} from "./actions/initApplication";
 
 const mapStateToProps = (state) => ({
   films: state.DATA.films,
-  isApplicationReady: state.CINEMA.isApplicationReady
+  isApplicationReady: state.CINEMA.isApplicationReady,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  init() {
-    return Promise.all([
-      dispatch(fetchFilmList()),
-      dispatch(checkAuth())
-    ]);
-  }
+  initApplication: () => initApplication(dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
