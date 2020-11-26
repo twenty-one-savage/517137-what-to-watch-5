@@ -25,7 +25,7 @@ class SignInScreen extends React.PureComponent {
   render() {
     return (
       <div className="user-page">
-        <Header className={HeaderClasses.USER_PAGE_HEAD} title={HeaderTitles.SIGN_IN}/>
+        <Header additionalClassNames={[HeaderClasses.USER_PAGE_HEAD]} title={HeaderTitles.SIGN_IN}/>
         <div className="sign-in user-page__content">
           <form action="#" className="sign-in__form" onSubmit={this._handleFormSubmit}>
             <div className="sign-in__fields">

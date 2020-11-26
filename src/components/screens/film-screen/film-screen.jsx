@@ -4,29 +4,32 @@ import Header from "../../commons/sections/header/header";
 import Footer from "../../commons/sections/footer/footer";
 import FilmTabs from "../../commons/film-tabs/film-tabs";
 import ListSameFilms from "../../commons/lists/list-same-films/list-same-films.connect";
-import BtnPlay from "../../commons/btnPlay/btnPlay";
+import BtnPlay from "../../commons/btn-play/btn-play";
 import withActiveTab from "../../../hocs/with-active-tab/with-active-tab";
 
-import {HeaderClasses} from "../../../consts";
+import {AuthorizationStatus, HeaderClasses} from "../../../consts";
 import filmScreenProp from "./film-screen.prop";
 
 
 const FilmScreenWithActiveTab = withActiveTab(FilmTabs);
 
 const FilmScreen = (props) => {
-  const {film, btnPlayHandler} = props;
+  const {film, btnPlayHandler, authorizationStatus} = props;
   const {
     id,
     name,
     poster_image: posterImage,
     released,
     genre,
-    background_image: backgroundImage
+    background_image: backgroundImage,
+    background_color: backgroundColor
   } = film;
 
   return (
       <>
-        <section className="movie-card movie-card--full">
+        <section className="movie-card movie-card--full" style={{
+          backgroundColor
+        }}>
           <div className="movie-card__hero">
             <div className="movie-card__bg">
               <img src={backgroundImage} alt={name}/>
@@ -34,7 +37,7 @@ const FilmScreen = (props) => {
 
             <h1 className="visually-hidden">WTW</h1>
 
-            <Header className={HeaderClasses.MOVIE_CARD_HEAD} />
+            <Header additionalClassNames={[HeaderClasses.MOVIE_CARD_HEAD]} logoIsLink={true} />
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
@@ -52,7 +55,7 @@ const FilmScreen = (props) => {
                     </svg>
                     <span>My list</span>
                   </button>
-                  <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
+                  {authorizationStatus === AuthorizationStatus.AUTH ? <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link> : null}
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 export default {
-  title: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.element
+  "title": PropTypes.string,
+  "additionalClassNames": PropTypes.arrayOf(PropTypes.string),
+  "children": PropTypes.element,
+  "logoIsLink": PropTypes.bool
 };

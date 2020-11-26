@@ -10,7 +10,7 @@ const MyListScreen = (props) => {
     <div className="user-page">
       <Header
         title={HeaderTitles.MY_LIST}
-        className={HeaderClasses.USER_PAGE_HEAD}
+        additionalClassNames={[HeaderClasses.USER_PAGE_HEAD]}
       />
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
