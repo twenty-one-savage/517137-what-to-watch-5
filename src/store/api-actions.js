@@ -1,14 +1,13 @@
-import {setFilms, setPromoFilm, requiredAuthorization, redirectToRoute, setApplicationReady} from "./action";
+import {setFilms, setPromoFilm, requiredAuthorization, redirectToRoute} from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../consts";
 
 export const fetchFilmList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
     .then(({data}) => dispatch(setFilms(data)))
-    .then(() => dispatch(setApplicationReady()))
 );
 
 export const fetchPromoFilm = () => (dispatch, _getState, api) => (
-  api.get(`${APIRoute.FILMS}/promo`)
+  api.get(AppRoute.FILMS_PROMO)
     .then(({data}) => dispatch(setPromoFilm(data)))
 );
 

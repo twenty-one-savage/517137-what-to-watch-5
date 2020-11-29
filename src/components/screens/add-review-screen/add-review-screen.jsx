@@ -10,12 +10,12 @@ const AddReviewScreen = (props) => {
   const {
     film,
     rating,
-    reviewValid,
-    ratingFieldChangeHandler,
-    commentFieldChangeHandler,
+    isValid,
+    fieldChangeHandler,
     comment,
     onSubmit
   } = props;
+
   const {
     id,
     background_image: backgroundImage,
@@ -36,9 +36,12 @@ const AddReviewScreen = (props) => {
 
 
   return (
-    <section className="movie-card movie-card--full" style={{
-      backgroundColor,
-    }}>
+    <section
+      className="movie-card movie-card--full"
+      style={{
+        backgroundColor,
+      }}
+    >
       <div className="movie-card__header">
         <div className="movie-card__bg">
           <img src={backgroundImage} alt={name}/>
@@ -68,7 +71,7 @@ const AddReviewScreen = (props) => {
                       type="radio"
                       name="rating"
                       value={star}
-                      onChange={ratingFieldChangeHandler}
+                      onChange={fieldChangeHandler}
                       checked={+rating === star}
                     />
                     <label className="rating__label" htmlFor={`star-${star}`}>{star}</label>
@@ -85,9 +88,9 @@ const AddReviewScreen = (props) => {
             <textarea
               className="add-review__textarea"
               name="comment"
-              id="review-text"
+              id="comment"
               placeholder="Review text"
-              onChange={commentFieldChangeHandler}
+              onChange={fieldChangeHandler}
               minLength="50"
               maxLength="400"
             />
@@ -96,11 +99,10 @@ const AddReviewScreen = (props) => {
                 className="add-review__btn"
                 type="submit"
                 onClick={handleFormSubmit}
-                disabled={!Object.values(reviewValid).every((el) => el === true)}
+                disabled={!(isValid())}
               >Post
               </button>
             </div>
-
           </div>
         </form>
       </div>

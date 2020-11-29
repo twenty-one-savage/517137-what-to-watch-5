@@ -54,7 +54,8 @@ export const AppRoute = {
   ROOT: `/`,
   MY_LIST: `/mylist`,
   LOGIN: `/login`,
-  FILMS: `/films/`
+  FILMS: `/films/`,
+  FILMS_PROMO: `/films/promo`
 };
 
 export const APIRoute = {
@@ -69,4 +70,9 @@ export const HttpCode = {
   UNAUTHORIZED: 401,
   NOT_FOUND: 404,
   SERVER_ERROR: 500
+};
+
+export const CommentLength = {
+  MIN: 50,
+  MAX: 400
 };
