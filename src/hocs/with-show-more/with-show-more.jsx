@@ -3,7 +3,7 @@ import {Film} from "../../consts";
 import {filmsType} from "../../commonPropTypes";
 
 const withShowMore = (Component) => {
-  class WithButton extends React.PureComponent {
+  class WithShowMore extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -33,11 +33,11 @@ const withShowMore = (Component) => {
       );
     }
   }
-  WithButton.propTypes = {
+  WithShowMore.propTypes = {
     films: filmsType,
   };
 
-  return WithButton;
+  return WithShowMore;
 };
 
 export default withShowMore;

@@ -5,9 +5,9 @@ export const ActionType = {
   UPDATE_FILM: `UPDATE_FILM`,
   UPDATE_PROMO_FILM: `UPDATE_PROMO_FILM`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  LOAD_USER_DATA: `LOAD_USER_DATA`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   SET_APPLICATION_READY: `SET_APPLICATION_READY`,
-  SHOW_SERVER_ERROR: `SHOW_SERVER_ERROR`,
   LOAD_COMMENTS: `LOAD_COMMENTS`
 };
 
@@ -49,4 +49,9 @@ export const loadFilmComments = (comments) => ({
 export const updateFilm = (film) => ({
   type: ActionType.UPDATE_FILM,
   payload: film,
+});
+
+export const loadUserData = (userInfo) => ({
+  type: ActionType.LOAD_USER_DATA,
+  payload: userInfo,
 });

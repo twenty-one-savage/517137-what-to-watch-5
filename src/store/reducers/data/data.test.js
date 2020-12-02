@@ -8,7 +8,7 @@ import {APIRoute} from "../../../consts";
 
 const api = createAPI(() => {});
 
-describe(`Offer Reducer testing`, () => {
+describe(`Film Reducer testing`, () => {
   it(`Reducer without additional parameters returns initial state`, () => {
     expect(data(void 0, {})).toEqual({
       films: [],
@@ -29,7 +29,7 @@ describe(`Offer Reducer testing`, () => {
   });
 });
 
-describe(`Testing related to offers async operations`, () => {
+describe(`Testing related to films async operations`, () => {
 
   it(`makes a correct API call for films`, () => {
     const apiMock = new MockAdapter(api);

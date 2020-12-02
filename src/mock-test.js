@@ -3,6 +3,7 @@ import rootReducer from 'store/reducers/root-reducer';
 import {setPromoFilm} from "./store/action";
 
 export const noop = () => {};
+export const USER_DATA = {login: `my@mail.ru`, password: `kooliman`};
 export const VISIBLE_MOVIES_COUNT = 16;
 export const ID = 1;
 export const RATING_STARS = [false, false, true, false, false];
