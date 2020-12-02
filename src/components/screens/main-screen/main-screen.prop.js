@@ -1,7 +1,4 @@
-import {filmsType} from "../../../commonPropTypes";
-
 export default {
-  "films": filmsType,
   "promoFilm": PropTypes.shape({
     "id": PropTypes.number.isRequired,
     "poster_image": PropTypes.string.isRequired,

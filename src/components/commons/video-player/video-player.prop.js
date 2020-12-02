@@ -1,4 +1,4 @@
 export default {
-  videoSrc: PropTypes.string.isRequired,
-  posterSrc: PropTypes.string,
+  "video_link": PropTypes.string,
+  "poster_image": PropTypes.string,
 };

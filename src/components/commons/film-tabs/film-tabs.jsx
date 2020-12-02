@@ -1,6 +1,6 @@
-import TabsOverview from "./tabs-overview/tabs-overview";
-import TabsDetails from "./tabs-details/tabs-details";
-import TabsReviews from "./tabs-reviews/tabs-reviews";
+import TabOverview from "./tab-overview/tab-overview";
+import TabDetails from "./tab-details/tab-details";
+import TabReviews from "./tab-reviews/tab-reviews.connect";
 import {TabsType} from "../../../consts";
 
 import filmTabsProp from "./film-tabs.prop";
@@ -8,11 +8,11 @@ import filmTabsProp from "./film-tabs.prop";
 const getTabContentByType = (tabType, film) => {
   switch (tabType) {
     case TabsType.OVERVIEW:
-      return <TabsOverview film={film}/>;
+      return <TabOverview film={film}/>;
     case TabsType.DETAILS:
-      return <TabsDetails film={film}/>;
+      return <TabDetails film={film}/>;
     case TabsType.REVIEWS:
-      return <TabsReviews/>;
+      return <TabReviews/>;
     default:
       return null;
   }
