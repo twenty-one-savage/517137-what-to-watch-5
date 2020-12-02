@@ -1,7 +1,10 @@
+import configureMockStore from "redux-mock-store";
 import {createStore} from 'redux';
 import rootReducer from 'store/reducers/root-reducer';
 import {setPromoFilm} from "./store/action";
 
+const mockStore = configureMockStore();
+const store = createStore(rootReducer);
 export const noop = () => {};
 export const USER_DATA = {login: `my@mail.ru`, password: `kooliman`};
 export const VISIBLE_MOVIES_COUNT = 16;
@@ -106,6 +109,12 @@ export const MockComponent = (props) => {
   );
 };
 
+export const activeState = {
+  reviewRating: ``,
+  reviewText: ``,
+  error: false,
+};
+
 MockComponent.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -113,6 +122,102 @@ MockComponent.propTypes = {
   ]).isRequired,
 };
 
-const store = createStore(rootReducer);
+export const storeAuth = mockStore({
+  USER: {
+    userData: {
+      data: {
+        id: 1,
+        email: `DonCaron@gmail.com`,
+        name: `DonCaron`,
+        avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/10.jpg`
+      }
+    },
+    authorizationStatus: `AUTH`
+  },
+  DATA: {
+    film: {
+      title: `Mind Hunter`,
+      genre: `Mystery`,
+      releaseDate: 2005,
+      poster: `/img/the-grand-budapest-hotel-poster.jpg`,
+      preview: `/img/mindhunter.jpg`,
+      backgroundPoster: `/img/bg-header.jpg`,
+      description: `FBI agent tries to solve murders all around the USA`,
+      rating: 10.0,
+      ratingAmount: 350,
+      director: `Dan Desk`,
+      cast: [`Kim Check`, `Alan Rickman`, `Peter Brower`],
+      runningTime: 50,
+      filmPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+      id: 3,
+      backgroundColor: `#73B39A`,
+      fullVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+      isFavorite: false,
+    },
+    films: [
+      {
+        title: `Fantastic Beasts`,
+        genre: `Fantasy`,
+        releaseDate: 2018,
+        poster: `/img/the-grand-budapest-hotel-poster.jpg`,
+        preview: `/img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+        backgroundPoster: `/img/bg-header.jpg`,
+        description: `New amazing story from J.K.Rowling, new adventures in wizards world`,
+        rating: 10.0,
+        ratingAmount: 500,
+        director: `Curt Russel`,
+        cast: [`Kim Check`, `Alan Rickman`, `Peter Brower`],
+        runningTime: 20,
+        filmPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        id: 1,
+        backgroundColor: `#73B39A`,
+        fullVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        isFavorite: false,
+
+      },
+      {
+        title: `Zombi Jack`,
+        genre: `Horror`,
+        releaseDate: 2020,
+        poster: `/img/the-grand-budapest-hotel-poster.jpg`,
+        preview: `/img/midnight-special.jpg`,
+        backgroundPoster: `/img/bg-header.jpg`,
+        description: `New flash eating virus trying to destory the world`,
+        rating: 5.5,
+        ratingAmount: 30,
+        director: `Wes Kraven`,
+        cast: [`Kim Check`, `Alan Rickman`, `Peter Brower`],
+        runningTime: 30,
+        filmPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        id: 2,
+        backgroundColor: `#73B39A`,
+        fullVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        isFavorite: false,
+
+      },
+      {
+        title: `Mind Hunter`,
+        genre: `Mystery`,
+        releaseDate: 2005,
+        poster: `/img/the-grand-budapest-hotel-poster.jpg`,
+        preview: `/img/mindhunter.jpg`,
+        backgroundPoster: `/img/bg-header.jpg`,
+        description: `FBI agent tries to solve murders all around the USA`,
+        rating: 10.0,
+        ratingAmount: 350,
+        director: `Dan Desk`,
+        cast: [`Kim Check`, `Alan Rickman`, `Peter Brower`],
+        runningTime: 40,
+        filmPreview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        id: 3,
+        backgroundColor: `#73B39A`,
+        fullVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        isFavorite: false,
+
+      },
+    ]
+  }
+});
+
 store.dispatch(setPromoFilm(FILM));
 export {store};

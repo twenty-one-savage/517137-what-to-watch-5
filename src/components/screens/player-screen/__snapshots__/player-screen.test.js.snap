@@ -71,6 +71,7 @@ exports[`render Player Screen 1`] = `
       />
       <button
         className="player__full-screen"
+        onClick={[Function]}
         type="button"
       >
         <svg

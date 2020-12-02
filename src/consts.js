@@ -1,23 +1,6 @@
-export const Film = {
-  COUNT: {
-    main: 8
-  },
-  RATING: {
-    min: 0,
-    max: 10
-  },
-  REVIEWS: {
-    COUNT: {
-      main: 4
-    },
-    RATING: {
-      min: 0,
-      max: 10
-    }
-  },
-  SAME_FILMS: {
-    count: 4
-  }
+export const FilmsCount = {
+  MAIN: 8,
+  SAME_FILMS: 4
 };
 
 export const FilmGenres = {
@@ -52,9 +35,12 @@ export const AuthorizationStatus = {
 
 export const AppRoute = {
   ROOT: `/`,
-  MY_LIST: `/mylist`,
+  MY_LIST: `/mylist/`,
   LOGIN: `/login`,
   FILMS: `/films/`,
+  FILMS: `/films/`,
+  PLAYER: `/player/`,
+  ANY: `*`
 };
 
 export const APIRoute = {

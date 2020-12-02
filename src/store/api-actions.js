@@ -14,9 +14,11 @@ export const fetchPromoFilm = () => (dispatch, _getState, api) => (
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
-    .then((user) => dispatch(loadUserData(user)))
+    .then(({data}) => dispatch(loadUserData(data)))
     .then(() => dispatch(requiredAuthorization(AuthorizationStatus.AUTH)))
-    .catch(() => {})
+    .catch(() => {
+      dispatch(redirectToRoute(AppRoute.ROOT));
+    })
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
@@ -28,8 +30,14 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
 
 export const addReview = (filmId, {rating, comment}) => (dispatch, _getState, api) => (
   api.post(APIRoute.COMMENTS + filmId, {rating, comment})
-    .then((user) => dispatch(loadUserData(user)))
+export const addReview = (filmId, {reviewRating, reviewText}, error) => (dispatch, _getState, api) => (
+  api.post(APIRoute.COMMENTS + filmId, {rating: reviewRating, comment: reviewText})
     .then(() => dispatch(redirectToRoute(AppRoute.FILMS + filmId)))
+    .catch((err) => {
+      if (err) {
+        dispatch(error);
+      }
+    })
 );
 
 export const changeFilmStatus = (filmId, status) => (dispatch, _getState, api) => (

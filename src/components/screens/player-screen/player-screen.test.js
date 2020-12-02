@@ -16,7 +16,7 @@ test(`render Player Screen`, () => {
               videoCurrentTime={102}
               progressBarPosition={23}
               handlePlayerExitClick={mock.noop}
-              handlePlayerFullscreenClick={mock.noop}
+              handlePlayerFullScreenClick={mock.noop}
               handlePlayerPlayClick={mock.noop}
               handlePlayerPauseClick={mock.noop}
             >

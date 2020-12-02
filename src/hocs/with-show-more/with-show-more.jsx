@@ -1,5 +1,5 @@
 import BtnShowMore from "../../components/commons/btn-show-more/btn-show-more";
-import {Film} from "../../consts";
+import {FilmsCount} from "../../consts";
 import {filmsType} from "../../commonPropTypes";
 
 const withShowMore = (Component) => {
@@ -8,14 +8,14 @@ const withShowMore = (Component) => {
       super(props);
 
       this.state = {
-        activeNumberOfFilms: Film.COUNT.main,
+        activeNumberOfFilms: FilmsCount.MAIN,
       };
 
       this.showMoreFilms = this.showMoreFilms.bind(this);
     }
 
     showMoreFilms() {
-      this.setState({activeNumberOfFilms: this.state.activeNumberOfFilms + Film.COUNT.main});
+      this.setState({activeNumberOfFilms: this.state.activeNumberOfFilms + FilmsCount.MAIN});
     }
 
     render() {

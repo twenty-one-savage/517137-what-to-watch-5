@@ -5,7 +5,7 @@ exports[`render User Block 1`] = `
   className="user-block"
 >
   <a
-    href="/mylist"
+    href="/mylist/"
     onClick={[Function]}
   >
     <div
