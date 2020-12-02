@@ -3,7 +3,8 @@ import {ActionType} from "../../action";
 
 const initialState = {
   films: [],
-  promoFilm: {}
+  promoFilm: {},
+  comments: []
 };
 
 const data = (state = initialState, action) => {
@@ -20,9 +21,9 @@ const data = (state = initialState, action) => {
       return extend(state, {
         films: updateFilm(state.films, action.payload)
       });
-    case ActionType.UPDATE_PROMO_FILM:
+    case ActionType.LOAD_COMMENTS:
       return extend(state, {
-        promoFilm: action.payload
+        comments: action.payload,
       });
     default:
       return state;

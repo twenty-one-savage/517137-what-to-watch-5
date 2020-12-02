@@ -1,6 +1,6 @@
-import {setFilms, setPromoFilm, requiredAuthorization, redirectToRoute} from "./action";
+import {setFilms, setPromoFilm, requiredAuthorization, redirectToRoute, loadFilmComments, updateFilm} from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../consts";
-import {toggleFavoriteStatus, updateFilm} from "../utils/common";
+import {toggleFavoriteStatus} from "../utils/common";
 
 export const fetchFilmList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
@@ -32,4 +32,10 @@ export const addReview = (filmId, {rating, comment}) => (dispatch, _getState, ap
 export const changeFilmStatus = (filmId, status) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.FAVORITE + filmId}/${toggleFavoriteStatus(status)}`)
     .then(({data}) => dispatch(updateFilm(data)))
+);
+
+
+export const fetchFilmComments = (filmId) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.COMMENTS + filmId}`)
+    .then(({data}) => dispatch(loadFilmComments(data)))
 );

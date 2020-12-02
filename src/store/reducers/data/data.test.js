@@ -12,7 +12,8 @@ describe(`Offer Reducer testing`, () => {
   it(`Reducer without additional parameters returns initial state`, () => {
     expect(data(void 0, {})).toEqual({
       films: [],
-      promoFilm: {}
+      promoFilm: {},
+      comments: []
     });
   });
 

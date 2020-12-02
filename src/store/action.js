@@ -8,6 +8,7 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   SET_APPLICATION_READY: `SET_APPLICATION_READY`,
   SHOW_SERVER_ERROR: `SHOW_SERVER_ERROR`,
+  LOAD_COMMENTS: `LOAD_COMMENTS`
 };
 
 export const changeActiveFilter = (genreForFilter) => ({
@@ -38,4 +39,14 @@ export const redirectToRoute = (url) => ({
 export const setApplicationReady = (isReady = true) => ({
   type: ActionType.SET_APPLICATION_READY,
   payload: isReady,
+});
+
+export const loadFilmComments = (comments) => ({
+  type: ActionType.LOAD_COMMENTS,
+  payload: comments,
+});
+
+export const updateFilm = (film) => ({
+  type: ActionType.UPDATE_FILM,
+  payload: film,
 });

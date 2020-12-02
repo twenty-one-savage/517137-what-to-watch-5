@@ -11,6 +11,7 @@ test(`render Main Screen`, () => {
         <Provider store={mock.store}>
           <BrowserRouter>
             <MainScreen
+              films={mock.FILMS}
               promoFilm={mock.FILM}
               btnPlayHandler={mock.noop}
             />

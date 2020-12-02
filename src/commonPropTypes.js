@@ -17,3 +17,14 @@ export const filmsType = PropTypes.arrayOf(PropTypes.shape({
   "released": PropTypes.number.isRequired,
   "is_favorite": PropTypes.bool
 })).isRequired;
+
+export const reviewsType = PropTypes.arrayOf(PropTypes.shape({
+  "id": PropTypes.number.isRequired,
+  "rating": PropTypes.number.isRequired,
+  "comment": PropTypes.string.isRequired,
+  "date": PropTypes.string.isRequired,
+  "user": PropTypes.shape({
+    "id": PropTypes.number.isRequired,
+    "name": PropTypes.string.isRequired,
+  })
+}));

@@ -6,9 +6,12 @@ import {HeaderClasses} from "../../../consts";
 import BtnPlay from "../../commons/btn-play/btn-play";
 import mainScreenProp from "./main-screen.prop";
 import BtnFavorite from "../../commons/btn-favorite/btn-favorite.connect";
+import withShowMore from "../../../hocs/with-show-more/with-show-more";
+
+const ListFilmWithShowMore = withShowMore(ListFilms);
 
 const MainScreen = (props) => {
-  const {promoFilm, btnPlayHandler} = props;
+  const {promoFilm, btnPlayHandler, films} = props;
 
   const {
     id,
@@ -89,7 +92,9 @@ const MainScreen = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <ListGenres/>
-          <ListFilms/>
+          <ListFilmWithShowMore
+            films={films}
+          />
         </section>
 
         <Footer/>

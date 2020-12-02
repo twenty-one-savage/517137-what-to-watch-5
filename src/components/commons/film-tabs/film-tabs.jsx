@@ -1,6 +1,6 @@
 import TabOverview from "./tab-overview/tab-overview";
 import TabDetails from "./tab-details/tab-details";
-import TabReviews from "./tab-reviews/tab-reviews";
+import TabReviews from "./tab-reviews/tab-reviews.connect";
 import {TabsType} from "../../../consts";
 
 import filmTabsProp from "./film-tabs.prop";

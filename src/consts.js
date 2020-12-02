@@ -62,7 +62,7 @@ export const APIRoute = {
   LOGIN: `/login`,
   COMMENTS: `/comments/`,
   FAVORITE: `/favorite/`,
-  FILMS_PROMO: `/films/promo`
+  FILMS_PROMO: `/films/promo`,
 };
 
 export const HttpCode = {

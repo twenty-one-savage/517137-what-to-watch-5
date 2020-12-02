@@ -14,6 +14,7 @@ test(`render Film Screen`, () => {
               film={mock.FILM}
               authorizationStatus={`AUTH`}
               btnPlayHandler={mock.noop}
+              loadComments={mock.noop}
             />
           </BrowserRouter>
         </Provider>).toJSON();

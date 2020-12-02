@@ -1,93 +1,47 @@
-const TabReviews = () => {
+import moment from "moment";
+import tabReviewsProp from "./tab-reviews.prop";
+
+const convertDate = (date) => {
+  return moment(date).format(`MMMM, DD YYYY`);
+};
+
+const TabReviews = (props) => {
+  const {reviews} = props;
+
+  const evenReviews = reviews.filter((item, i) => i % 2 === 0);
+  const unevenReviews = reviews.filter((item, i) => i % 2 !== 0);
+
+  const createReview = (review, i) => {
+    return (
+      <div className="review" key={i + 1}>
+        <blockquote className="review__quote">
+          <p className="review__text">{review.comment}</p>
+
+          <footer className="review__details">
+            <cite className="review__author">{review.user.name}</cite>
+            <time className="review__date" dateTime="2016-12-24">{convertDate(review.date)}</time>
+          </footer>
+        </blockquote>
+
+        <div className="review__rating">{review.rating.toFixed(1)}</div>
+      </div>
+    );
+  };
+
   return (
-    <div className="movie-card__reviews movie-card__row">
-      <div className="movie-card__reviews-col">
-        <div className="review">
-          <blockquote className="review__quote">
-            <p className="review__text">Discerning travellers and Wes Anderson fans will luxuriate in the glorious
-              years.</p>
-
-            <footer className="review__details">
-              <cite className="review__author">Kate Muir</cite>
-              <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
-            </footer>
-          </blockquote>
-
-          <div className="review__rating">8,9</div>
+    <>
+      <div className="movie-card__reviews movie-card__row">
+        <div className="movie-card__reviews-col">
+          {evenReviews.map((review, i) => createReview(review, i))}
         </div>
-
-        <div className="review">
-          <blockquote className="review__quote">
-            <p className="review__text">a hint of gravitas to the mix, improving the recipe.</p>
-
-            <footer className="review__details">
-              <cite className="review__author">Bill Goodykoontz</cite>
-              <time className="review__date" dateTime="2015-11-18">November 18, 2015</time>
-            </footer>
-          </blockquote>
-
-          <div className="review__rating">8,0</div>
-        </div>
-
-        <div className="review">
-          <blockquote className="review__quote">
-            <p className="review__text">I find it amusing, and while I can appreciate the creativity, i an
-              hour and 40 minutes I wish I could take back.</p>
-
-            <footer className="review__details">
-              <cite className="review__author">Amanda Greever</cite>
-              <time className="review__date" dateTime="2015-11-18">November 18, 2015</time>
-            </footer>
-          </blockquote>
-
-          <div className="review__rating">8,0</div>
+        <div className="movie-card__reviews-col">
+          {unevenReviews.map((review, i) => createReview(review, i))}
         </div>
       </div>
-      <div className="movie-card__reviews-col">
-        <div className="review">
-          <blockquote className="review__quote">
-            <p className="review__text">The mannered, madcap proceedings are often delightful, occasionally silly, and
-              here and there, gruesome and/or heartbreaking.</p>
-
-            <footer className="review__details">
-              <cite className="review__author">Matthew Lickona</cite>
-              <time className="review__date" dateTime="2016-12-20">December 20, 2016</time>
-            </footer>
-          </blockquote>
-
-          <div className="review__rating">7,2</div>
-        </div>
-
-        <div className="review">
-          <blockquote className="review__quote">
-            <p className="review__text">It is certainly a magical and childlike way of storytelling, even if the content
-              is a little more adult.</p>
-
-            <footer className="review__details">
-              <cite className="review__author">Paula Fleri-Soler</cite>
-              <time className="review__date" dateTime="2016-12-20">December 20, 2016</time>
-            </footer>
-          </blockquote>
-
-          <div className="review__rating">7,6</div>
-        </div>
-
-        <div className="review">
-          <blockquote className="review__quote">
-            <p className="review__text">It is certainly a magical and childlike way of storytelling, even if the content
-              is a little more adult.</p>
-
-            <footer className="review__details">
-              <cite className="review__author">Paula Fleri-Soler</cite>
-              <time className="review__date" dateTime="2016-12-20">December 20, 2016</time>
-            </footer>
-          </blockquote>
-
-          <div className="review__rating">7,0</div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
+
+TabReviews.propTypes = tabReviewsProp;
 
 export default TabReviews;

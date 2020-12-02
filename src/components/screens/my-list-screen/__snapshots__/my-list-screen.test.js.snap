@@ -63,7 +63,72 @@ exports[`render My List Screen 1`] = `
     </h2>
     <div
       className="catalog__movies-list"
-    />
+    >
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+      >
+        <a
+          href="/films/1"
+          onClick={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Bronson"
+              height="175"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/bronson.jpg"
+              width="280"
+            />
+          </div>
+        </a>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/1"
+            onClick={[Function]}
+          >
+            Bronson
+          </a>
+        </h3>
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+      >
+        <a
+          href="/films/2"
+          onClick={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Matrix"
+              height="175"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/matrix.jpg"
+              width="280"
+            />
+          </div>
+        </a>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/2"
+            onClick={[Function]}
+          >
+            Matrix
+          </a>
+        </h3>
+      </article>
+    </div>
   </section>
   <footer
     className="page-footer"
