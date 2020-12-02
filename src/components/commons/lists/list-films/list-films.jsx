@@ -1,6 +1,6 @@
 import FilmCard from "../../film-card/film-card";
 import BtnShowMore from "../../btn-show-more/btn-show-more";
-import {filmsType} from "../../../../commonPropTypes";
+import listFilmsProp from "./list-films.prop";
 import {Film} from "../../../../consts";
 import withHover from "../../../../hocs/with-hover/with-hover";
 
@@ -40,6 +40,6 @@ class ListFilms extends React.PureComponent {
   }
 }
 
-ListFilms.propTypes = filmsType;
+ListFilms.propTypes = listFilmsProp;
 
 export default ListFilms;

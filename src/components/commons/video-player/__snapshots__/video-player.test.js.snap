@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Video Player 1`] = `
+<video
+  autoPlay={true}
+  muted={true}
+  poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Pulp_Fiction.jpg"
+  src="http://media.xiph.org/mango/tears_of_steel_1080p.webm"
+/>
+`;

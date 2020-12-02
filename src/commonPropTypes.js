@@ -15,5 +15,5 @@ export const filmsType = PropTypes.arrayOf(PropTypes.shape({
   "run_time": PropTypes.number.isRequired,
   "genre": PropTypes.string.isRequired,
   "released": PropTypes.number.isRequired,
-  "isFavorite": PropTypes.bool
+  "is_favorite": PropTypes.bool
 })).isRequired;

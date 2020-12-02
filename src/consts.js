@@ -55,13 +55,14 @@ export const AppRoute = {
   MY_LIST: `/mylist`,
   LOGIN: `/login`,
   FILMS: `/films/`,
-  FILMS_PROMO: `/films/promo`
 };
 
 export const APIRoute = {
   FILMS: `/films`,
   LOGIN: `/login`,
-  COMMENTS: `/comments/`
+  COMMENTS: `/comments/`,
+  FAVORITE: `/favorite/`,
+  FILMS_PROMO: `/films/promo`
 };
 
 export const HttpCode = {

@@ -1,11 +1,11 @@
 import Header from "../../commons/sections/header/header";
 import Footer from "../../commons/sections/footer/footer";
 import ListFilms from "../../commons/lists/list-films/list-films.connect";
-import {filmsType} from "../../../commonPropTypes";
+import myListScreenProp from "./my-list-screen.prop";
 import {HeaderClasses, HeaderTitles} from "../../../consts";
 
 const MyListScreen = (props) => {
-  const {films} = props;
+  const {favoriteFilms} = props;
   return (
     <div className="user-page">
       <Header
@@ -15,7 +15,7 @@ const MyListScreen = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <ListFilms films={films}/>
+        <ListFilms films={favoriteFilms}/>
       </section>
 
       <Footer />
@@ -23,6 +23,6 @@ const MyListScreen = (props) => {
   );
 };
 
-MyListScreen.propTypes = filmsType;
+MyListScreen.propTypes = myListScreenProp;
 
 export default MyListScreen;

@@ -49,7 +49,7 @@ const AddReviewScreen = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <Header>
+        <Header >
           <BreadCrumbs id={id} name={name}/>
         </Header>
 
@@ -99,7 +99,7 @@ const AddReviewScreen = (props) => {
                 className="add-review__btn"
                 type="submit"
                 onClick={handleFormSubmit}
-                disabled={!(isValid())}
+                disabled={!(isValid)}
               >Post
               </button>
             </div>

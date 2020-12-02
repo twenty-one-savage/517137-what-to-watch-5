@@ -5,6 +5,7 @@ import Header from "../../commons/sections/header/header";
 import {HeaderClasses} from "../../../consts";
 import BtnPlay from "../../commons/btn-play/btn-play";
 import mainScreenProp from "./main-screen.prop";
+import BtnFavorite from "../../commons/btn-favorite/btn-favorite.connect";
 
 const MainScreen = (props) => {
   const {promoFilm, btnPlayHandler} = props;
@@ -68,7 +69,6 @@ const MainScreen = (props) => {
             <div className="movie-card__poster">
               <img src={posterImage} alt={name} width="218" height="327"/>
             </div>
-
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
@@ -78,12 +78,7 @@ const MainScreen = (props) => {
 
               <div className="movie-card__buttons">
                 <BtnPlay btnPlayHandler={btnPlayHandler} id={id}/>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"/>
-                  </svg>
-                  <span>My list</span>
-                </button>
+                <BtnFavorite film={promoFilm} />
               </div>
             </div>
           </div>

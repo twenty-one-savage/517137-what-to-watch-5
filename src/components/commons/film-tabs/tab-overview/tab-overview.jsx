@@ -1,7 +1,7 @@
-import tabsOverviewProps from "./tabs-overview.prop";
+import tabsOverviewProps from "./tab-overview.prop";
 import {createRatingTag} from "../../../../utils/common";
 
-const TabsOverview = (props) => {
+const TabOverview = (props) => {
   const {
     rating,
     scores_count: scoresCount,
@@ -30,6 +30,6 @@ const TabsOverview = (props) => {
   );
 };
 
-TabsOverview.propTypes = tabsOverviewProps;
+TabOverview.propTypes = tabsOverviewProps;
 
-export default TabsOverview;
+export default TabOverview;

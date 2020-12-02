@@ -46,11 +46,7 @@ class App extends React.PureComponent {
           <PrivateRoute
             exact
             path="/mylist"
-            render={() => {
-              return (
-                <MyListScreen/>
-              );
-            }}
+            render={() => <MyListScreen/>}
           />
           <PrivateRoute
             exact

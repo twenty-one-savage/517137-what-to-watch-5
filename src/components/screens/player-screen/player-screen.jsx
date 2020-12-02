@@ -8,7 +8,7 @@ const PlayerScreen = (props) => {
     videoCurrentTime,
     progressBarPosition,
     handlePlayerExitClick,
-    handlePlayerFullScreen,
+    handlePlayerFullScreenClick,
     handlePlayerPlayClick,
     handlePlayerPauseClick,
     children
@@ -53,7 +53,11 @@ const PlayerScreen = (props) => {
           </button>
           <div className="player__name">{title}</div>
 
-          <button type="button" className="player__full-screen" onClick={handlePlayerFullScreen}>
+          <button
+            type="button"
+            className="player__full-screen"
+            onClick={handlePlayerFullScreenClick}
+          >
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use xlinkHref="#full-screen"/>
             </svg>

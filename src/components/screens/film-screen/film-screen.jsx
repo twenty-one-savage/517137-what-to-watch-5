@@ -9,6 +9,7 @@ import withActiveTab from "../../../hocs/with-active-tab/with-active-tab";
 
 import {AuthorizationStatus, HeaderClasses} from "../../../consts";
 import filmScreenProp from "./film-screen.prop";
+import BtnFavorite from "../../commons/btn-favorite/btn-favorite.connect";
 
 
 const FilmScreenWithActiveTab = withActiveTab(FilmTabs);
@@ -49,12 +50,7 @@ const FilmScreen = (props) => {
 
                 <div className="movie-card__buttons">
                   <BtnPlay id={id} btnPlayHandler={btnPlayHandler}/>
-                  <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add" />
-                    </svg>
-                    <span>My list</span>
-                  </button>
+                  <BtnFavorite film={film} />
                   {authorizationStatus === AuthorizationStatus.AUTH ? <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link> : null}
                 </div>
               </div>

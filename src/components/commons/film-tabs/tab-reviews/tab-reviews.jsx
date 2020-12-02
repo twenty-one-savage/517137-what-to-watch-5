@@ -1,4 +1,4 @@
-const TabsReviews = () => {
+const TabReviews = () => {
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
@@ -90,4 +90,4 @@ const TabsReviews = () => {
   );
 };
 
-export default TabsReviews;
+export default TabReviews;

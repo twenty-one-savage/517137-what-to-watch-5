@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Film Card 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <a
+    href="/films/5"
+    onClick={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Pumping"
+        height="175"
+        src="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/pulp-fiction.jpg"
+        width="280"
+      />
+    </div>
+  </a>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="/films/5"
+      onClick={[Function]}
+    >
+      Pumping
+    </a>
+  </h3>
+</article>
+`;

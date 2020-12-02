@@ -1,7 +1,7 @@
-import tabsDetailsProps from "./tabs-details.props";
+import tabDetailsProps from "./tab-details.props";
 import {getFormattedTime} from "../../../../utils/common";
 
-const TabsDetails = (props) => {
+const TabDetails = (props) => {
   const {
     director,
     starring,
@@ -40,6 +40,6 @@ const TabsDetails = (props) => {
   );
 };
 
-TabsDetails.propTypes = tabsDetailsProps;
+TabDetails.propTypes = tabDetailsProps;
 
-export default TabsDetails;
+export default TabDetails;
