@@ -1,13 +1,15 @@
-import {Fragment} from "react";
 import Header from "../../commons/sections/header/header";
 import BreadCrumbs from "../../commons/breadcrumbs/breadcrumbs";
 import addReviewScreenProp from "./add-review-screen.prop";
+import ReviewForm from "../../commons/review-form/review-form.connect";
+import withReviewForm from "../../../hocs/with-review-form/with-review-form";
 
-const RATING_STARS = [1, 2, 3, 4, 5];
+const ReviewFormWithReviewForm = withReviewForm(ReviewForm);
 
 const AddReviewScreen = (props) => {
 
   const {
+<<<<<<< Updated upstream
     film,
     rating,
     reviewValid,
@@ -15,6 +17,9 @@ const AddReviewScreen = (props) => {
     commentFieldChangeHandler,
     comment,
     onSubmit
+=======
+    film
+>>>>>>> Stashed changes
   } = props;
   const {
     id,
@@ -23,17 +28,6 @@ const AddReviewScreen = (props) => {
     name,
     poster_image: poster,
   } = film;
-
-  const handleFormSubmit = (evt) => {
-    evt.preventDefault();
-    onSubmit(
-        id,
-        {
-          rating,
-          comment,
-        });
-  };
-
 
   return (
     <section className="movie-card movie-card--full" style={{
@@ -56,6 +50,7 @@ const AddReviewScreen = (props) => {
       </div>
 
       <div className="add-review">
+<<<<<<< Updated upstream
         <form action="#" className="add-review__form">
           <div className="rating">
             <div className="rating__stars">
@@ -103,6 +98,9 @@ const AddReviewScreen = (props) => {
 
           </div>
         </form>
+=======
+        <ReviewFormWithReviewForm id={id}/>
+>>>>>>> Stashed changes
       </div>
     </section>
   );

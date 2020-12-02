@@ -55,7 +55,7 @@ const withPlayer = (Component) => {
 
     _handlePlayerFullscreenClick() {
       const video = this._videoRef.current;
-      video.requestFullScreen();
+      video.requestFullscreen();
     }
 
     _handlePlayerPlayClick() {

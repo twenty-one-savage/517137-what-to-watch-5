@@ -1,6 +1,6 @@
 import {Router as BrowserRouter, Switch, Route} from "react-router-dom";
 import MainScreen from "../../screens/main-screen/main-screen.connect";
-import AddReviewScreen from "../../screens/add-review-screen/add-review-screen.connect";
+import AddReviewScreen from "../../screens/add-review-screen/add-review-screen";
 import FilmScreen from "../../screens/film-screen/film-screen.connect";
 import MyListScreen from "../../screens/my-list-screen/my-list-screen.connect";
 import PlayerScreen from "../../screens/player-screen/player-screen";
@@ -12,6 +12,7 @@ import withPlayer from "../../../hocs/with-player/with-player";
 import appProp from "./app.prop";
 import NotFound from "../../screens/404/404";
 import withUserReview from "../../../hocs/with-user-review/with-user-review";
+import {AppRoute} from "../../../consts";
 
 const PlayerWrapped = withPlayer(PlayerScreen);
 const AddReviewScreenWrapped = withUserReview(AddReviewScreen);
@@ -40,21 +41,26 @@ class App extends React.PureComponent {
               />
             )}
           />
-          <Route exact path="/login">
+          <Route exact path={AppRoute.LOGIN}>
             <SignInScreen/>
           </Route>
           <PrivateRoute
             exact
+<<<<<<< Updated upstream
             path="/mylist"
             render={() => {
               return (
                 <MyListScreen/>
               );
             }}
+=======
+            path={AppRoute.MY_LIST}
+            render={() => <MyListScreen/>}
+>>>>>>> Stashed changes
           />
           <PrivateRoute
             exact
-            path="/films/:id/review"
+            path={`${AppRoute.FILMS}:id/review`}
             render={({match}) => (
               <AddReviewScreenWrapped
                 film={getMatchingFilm(films, match)}
@@ -63,7 +69,7 @@ class App extends React.PureComponent {
           />
           <Route
             exact
-            path="/films/:id?"
+            path={`${AppRoute.FILMS}:id?`}
             render={({history, match}) => (
               <FilmScreen
                 film={getMatchingFilm(films, match)}
@@ -73,7 +79,7 @@ class App extends React.PureComponent {
           />
           <Route
             exact
-            path="/player/:id"
+            path={`${AppRoute.PLAYER}:id`}
             render={({match, history}) => (
               <PlayerWrapped
                 film={getMatchingFilm(films, match)}
@@ -82,7 +88,7 @@ class App extends React.PureComponent {
             )}
           />
           <Route
-            path="*"
+            path={AppRoute.ANY}
             component={NotFound}
           />
 

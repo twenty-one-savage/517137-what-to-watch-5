@@ -15,6 +15,7 @@ class ListFilms extends React.PureComponent {
     this._handleBtnShowMoreClick = this._handleBtnShowMoreClick.bind(this);
   }
 
+<<<<<<< Updated upstream
   _handleBtnShowMoreClick(evt) {
     evt.preventDefault();
     this.setState({
@@ -32,6 +33,18 @@ class ListFilms extends React.PureComponent {
         <div className="catalog__movies-list">
           {remains.map((film) => (
             <FilmCardWithHover key={film.id} film={film}/>
+=======
+  const {films, activeNumberOfFilms} = props;
+  return (
+    <>
+      <div className="catalog__movies-list">
+        {
+          films.slice(0, activeNumberOfFilms).map((film, i) => (
+            <FilmCardWithHover
+              key={`${i}-${film.name}`}
+              film={film}
+            />
+>>>>>>> Stashed changes
           ))}
         </div>
         {filmsCount > this.state.renderedFilmsCount && <BtnShowMore onClick={this._handleBtnShowMoreClick}/>}
