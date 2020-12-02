@@ -46,17 +46,8 @@ class App extends React.PureComponent {
           </Route>
           <PrivateRoute
             exact
-<<<<<<< Updated upstream
-            path="/mylist"
-            render={() => {
-              return (
-                <MyListScreen/>
-              );
-            }}
-=======
             path={AppRoute.MY_LIST}
             render={() => <MyListScreen/>}
->>>>>>> Stashed changes
           />
           <PrivateRoute
             exact

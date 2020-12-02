@@ -12,15 +12,15 @@ const AddReviewScreen = (props) => {
 <<<<<<< Updated upstream
     film,
     rating,
-    reviewValid,
-    ratingFieldChangeHandler,
-    commentFieldChangeHandler,
+    isValid,
+    fieldChangeHandler,
     comment,
     onSubmit
 =======
     film
 >>>>>>> Stashed changes
   } = props;
+
   const {
     id,
     background_image: backgroundImage,
@@ -30,9 +30,12 @@ const AddReviewScreen = (props) => {
   } = film;
 
   return (
-    <section className="movie-card movie-card--full" style={{
-      backgroundColor,
-    }}>
+    <section
+      className="movie-card movie-card--full"
+      style={{
+        backgroundColor,
+      }}
+    >
       <div className="movie-card__header">
         <div className="movie-card__bg">
           <img src={backgroundImage} alt={name}/>
@@ -40,7 +43,7 @@ const AddReviewScreen = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <Header>
+        <Header >
           <BreadCrumbs id={id} name={name}/>
         </Header>
 
@@ -63,7 +66,7 @@ const AddReviewScreen = (props) => {
                       type="radio"
                       name="rating"
                       value={star}
-                      onChange={ratingFieldChangeHandler}
+                      onChange={fieldChangeHandler}
                       checked={+rating === star}
                     />
                     <label className="rating__label" htmlFor={`star-${star}`}>{star}</label>
@@ -80,9 +83,9 @@ const AddReviewScreen = (props) => {
             <textarea
               className="add-review__textarea"
               name="comment"
-              id="review-text"
+              id="comment"
               placeholder="Review text"
-              onChange={commentFieldChangeHandler}
+              onChange={fieldChangeHandler}
               minLength="50"
               maxLength="400"
             />
@@ -91,11 +94,10 @@ const AddReviewScreen = (props) => {
                 className="add-review__btn"
                 type="submit"
                 onClick={handleFormSubmit}
-                disabled={!Object.values(reviewValid).every((el) => el === true)}
+                disabled={!(isValid)}
               >Post
               </button>
             </div>
-
           </div>
         </form>
 =======

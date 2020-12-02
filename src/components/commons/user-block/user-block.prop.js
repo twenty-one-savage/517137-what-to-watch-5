@@ -1,3 +1,3 @@
 export default {
-  authorizationStatus: PropTypes.string.isRequired
+  "authorizationStatus": PropTypes.string.isRequired
 };

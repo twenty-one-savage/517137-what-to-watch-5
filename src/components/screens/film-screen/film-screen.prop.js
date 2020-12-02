@@ -1,7 +1,4 @@
-import {filmsType} from "../../../commonPropTypes";
-
 export default {
-  "films": filmsType,
   "btnPlayHandler": PropTypes.func.isRequired,
   "authorizationStatus": PropTypes.string.isRequired,
   "film": PropTypes.shape({

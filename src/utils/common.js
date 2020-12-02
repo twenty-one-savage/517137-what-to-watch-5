@@ -75,3 +75,11 @@ export const createRatingTag = (value) => {
 
   return tag;
 };
+
+export const updateFilm = (films, changedFilm) => {
+  return films.map((film) => film.id === changedFilm.id ? changedFilm : film);
+};
+
+export const toggleFavoriteStatus = (isFavorite) => {
+  return isFavorite ? 0 : 1;
+};

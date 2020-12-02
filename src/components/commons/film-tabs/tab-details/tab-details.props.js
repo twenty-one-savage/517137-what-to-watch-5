@@ -1,4 +1,4 @@
-const tabsDetailsProps = {
+const tabDetailsProps = {
   "film": PropTypes.shape({
     "director": PropTypes.string.isRequired,
     "starring": PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -8,4 +8,4 @@ const tabsDetailsProps = {
   }).isRequired
 };
 
-export default tabsDetailsProps;
+export default tabDetailsProps;

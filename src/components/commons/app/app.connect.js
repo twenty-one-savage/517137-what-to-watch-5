@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  initApplication: () => initApplication(dispatch)
+  initApplication: () => dispatch(initApplication())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

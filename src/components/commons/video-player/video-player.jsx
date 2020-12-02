@@ -1,7 +1,10 @@
 import videoPlayerProp from "./video-player.prop";
 
 const VideoPlayer = (props) => {
-  const {videoSrc, posterSrc} = props;
+  const {
+    video_link: videoSrc,
+    poster_image: posterSrc
+  } = props;
   return (
     <video
       src={videoSrc}

@@ -37,19 +37,18 @@ export const AppRoute = {
   ROOT: `/`,
   MY_LIST: `/mylist/`,
   LOGIN: `/login`,
-<<<<<<< Updated upstream
-  FILMS: `/films/`
-=======
+  FILMS: `/films/`,
   FILMS: `/films/`,
   PLAYER: `/player/`,
   ANY: `*`
->>>>>>> Stashed changes
 };
 
 export const APIRoute = {
   FILMS: `/films`,
   LOGIN: `/login`,
-  COMMENTS: `/comments/`
+  COMMENTS: `/comments/`,
+  FAVORITE: `/favorite/`,
+  FILMS_PROMO: `/films/promo`,
 };
 
 export const HttpCode = {
@@ -58,4 +57,9 @@ export const HttpCode = {
   UNAUTHORIZED: 401,
   NOT_FOUND: 404,
   SERVER_ERROR: 500
+};
+
+export const CommentLength = {
+  MIN: 50,
+  MAX: 400
 };

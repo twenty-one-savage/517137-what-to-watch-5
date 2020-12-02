@@ -14,7 +14,7 @@ const withPlayer = (Component) => {
 
       this._videoRef = React.createRef();
 
-      this._handlePlayerFullscreenClick = this._handlePlayerFullscreenClick.bind(this);
+      this._handlePlayerFullScreenClick = this._handlePlayerFullScreenClick.bind(this);
       this._handlePlayerPlayClick = this._handlePlayerPlayClick.bind(this);
       this._handlePlayerPauseClick = this._handlePlayerPauseClick.bind(this);
       this._handleVideoTimeUpdate = this._handleVideoTimeUpdate.bind(this);
@@ -53,7 +53,7 @@ const withPlayer = (Component) => {
       }
     }
 
-    _handlePlayerFullscreenClick() {
+    _handlePlayerFullScreenClick() {
       const video = this._videoRef.current;
       video.requestFullscreen();
     }
@@ -90,7 +90,7 @@ const withPlayer = (Component) => {
           videoCurrentTime={videoCurrentTime}
           progressBarPosition={progressBarPosition}
           handlePlayerExitClick={handlePlayerExitClick}
-          handlePlayerFullscreenClick={this._handlePlayerFullscreenClick}
+          handlePlayerFullScreenClick={this._handlePlayerFullScreenClick}
           handlePlayerPlayClick={this._handlePlayerPlayClick}
           handlePlayerPauseClick={this._handlePlayerPauseClick}
         >
@@ -112,7 +112,7 @@ const withPlayer = (Component) => {
       "name": PropTypes.string.isRequired,
       "video_link": PropTypes.string.isRequired,
     }).isRequired,
-    "handlePlayerExitClick": PropTypes.func.isRequired
+    "handlePlayerExitClick": PropTypes.func.isRequired,
   };
 
   return WithPlayer;

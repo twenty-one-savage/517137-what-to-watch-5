@@ -5,7 +5,6 @@ import {setPromoFilm} from "./store/action";
 
 const mockStore = configureMockStore();
 const store = createStore(rootReducer);
-
 export const noop = () => {};
 export const USER_DATA = {login: `my@mail.ru`, password: `kooliman`};
 export const VISIBLE_MOVIES_COUNT = 16;
