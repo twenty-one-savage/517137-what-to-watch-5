@@ -11,7 +11,7 @@ import withShowMore from "../../../hocs/with-show-more/with-show-more";
 const ListFilmWithShowMore = withShowMore(ListFilms);
 
 const MainScreen = (props) => {
-  const {promoFilm, btnPlayHandler, films} = props;
+  const {promoFilm, btnPlayHandler} = props;
 
   const {
     id,
@@ -92,9 +92,6 @@ const MainScreen = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <ListGenres/>
-          <ListFilmWithShowMore
-            films={films}
-          />
         </section>
 
         <Footer/>

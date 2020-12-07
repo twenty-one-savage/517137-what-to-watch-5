@@ -1,9 +1,14 @@
 import listGenreProps from "./list-genres.prop";
+import ListFilms from "../list-films/list-films.connect";
+import withShowMore from "../../../../hocs/with-show-more/with-show-more";
+
+const ListFilmWithShowMore = withShowMore(ListFilms);
 
 const ListGenres = (props) => {
-  const {genres, activeGenre, changeActiveFilter} = props;
+  const {films, genres, activeGenre, changeActiveFilter} = props;
   const activeClass = `catalog__genres-item--active`;
   return (
+    <>
     <ul className="catalog__genres-list">
       {genres.map((genre, i) =>
         <li
@@ -18,6 +23,10 @@ const ListGenres = (props) => {
         </li>
       )}
     </ul>
+    <ListFilmWithShowMore
+      films={films}
+    />
+    </>
   );
 };
 

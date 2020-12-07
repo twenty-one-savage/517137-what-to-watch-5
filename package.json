@@ -1,9 +1,12 @@
-{
+  {
   "name": "what-to-watch",
   "version": "1.0.0",
   "private": true,
   "description": "Личный проект «Что посмотреть» от HTML Academy",
+  "homepage": "https://twenty-one-savage.github.io/517137-what-to-watch-5",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "webpack --mode production",
     "start": "webpack-dev-server",
     "eslint": "eslint --ext .jsx --ext .js src/",
@@ -21,6 +24,7 @@
     "eslint": "5.13.0",
     "eslint-config-htmlacademy": "0.5.2",
     "eslint-plugin-react": "7.18.3",
+    "gh-pages": "3.1.0",
     "jest": "25.1.0",
     "react-test-renderer": "16.12.0",
     "redux-devtools-extension": "2.13.8",

@@ -1,11 +1,12 @@
 import {connect} from "react-redux";
 import {changeActiveFilter} from "../../../../store/action";
 import ListGenres from "./list-genres";
-import {getGenres} from "../../../../store/selectors";
+import {getFilmsByGenre, getGenres} from "../../../../store/selectors";
 
 const mapStateToProps = (state) => ({
   genres: getGenres(state),
-  activeGenre: state.CINEMA.activeGenre
+  activeGenre: state.CINEMA.activeGenre,
+  films: getFilmsByGenre(state.DATA.films, state.CINEMA.activeGenre)
 });
 
 const mapDispatchToProps = (dispatch) => ({
