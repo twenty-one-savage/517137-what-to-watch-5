@@ -19,14 +19,13 @@ const PlayerScreen = (props) => {
   return (
     <div className="player">
       {children}
-
       <button type="button" className="player__exit" onClick={handlePlayerExitClick}>Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
             <progress className="player__progress" value={`${progressBarPosition}`} max="100"/>
-            <div className="player__toggler" style={styleLeft}>Toggler</div>
+            <div className="player__toggler" style={styleLeft}>Switcher</div>
           </div>
           <div className="player__time-value">{getFormattedTime(videoCurrentTime)}</div>
         </div>

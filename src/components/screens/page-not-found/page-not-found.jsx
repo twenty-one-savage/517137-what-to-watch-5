@@ -3,7 +3,7 @@ import {AppRoute, HeaderClasses} from "../../../consts";
 import Header from "../../commons/sections/header/header";
 import Footer from "../../commons/sections/footer/footer";
 
-const NotFound = () => {
+const PageNotFound = () => {
   return (
     <div className="user-page">
       <Header additionalClassNames={[HeaderClasses.USER_PAGE_HEAD]}/>
@@ -25,4 +25,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default PageNotFound;

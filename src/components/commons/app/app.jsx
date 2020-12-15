@@ -10,7 +10,7 @@ import {getMatchingFilm} from "../../../utils/common";
 import browserHistory from "../../../browser-history";
 import withPlayer from "../../../hocs/with-player/with-player";
 import appProp from "./app.prop";
-import NotFound from "../../screens/404/404";
+import PageNotFound from "../../screens/page-not-found/page-not-found";
 import withUserReview from "../../../hocs/with-user-review/with-user-review";
 import {AppRoute} from "../../../consts";
 
@@ -80,7 +80,7 @@ class App extends React.PureComponent {
           />
           <Route
             path={AppRoute.ANY}
-            component={NotFound}
+            component={PageNotFound}
           />
 
         </Switch>

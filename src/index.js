@@ -13,16 +13,16 @@ import {redirect} from "./store/middlewares/redirect";
 const api = createAPI(() => store.dispatch(requiredAuthorization(AuthorizationStatus.NO_AUTH)));
 
 const store = createStore(
-    rootReducer,
-    composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument(api)),
-        applyMiddleware(redirect)
-    )
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(thunk.withExtraArgument(api)),
+    applyMiddleware(redirect),
+  ),
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-      <App/>
-    </Provider>,
-    document.querySelector(`#root`)
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  document.querySelector(`#root`),
 );

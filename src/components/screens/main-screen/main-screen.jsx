@@ -1,4 +1,3 @@
-import ListFilms from "../../commons/lists/list-films/list-films.connect";
 import ListGenres from "../../commons/lists/list-genres/list-genres.connect";
 import Footer from "../../commons/sections/footer/footer";
 import Header from "../../commons/sections/header/header";
@@ -6,9 +5,6 @@ import {HeaderClasses} from "../../../consts";
 import BtnPlay from "../../commons/btn-play/btn-play";
 import mainScreenProp from "./main-screen.prop";
 import BtnFavorite from "../../commons/btn-favorite/btn-favorite.connect";
-import withShowMore from "../../../hocs/with-show-more/with-show-more";
-
-const ListFilmWithShowMore = withShowMore(ListFilms);
 
 const MainScreen = (props) => {
   const {promoFilm, btnPlayHandler} = props;
@@ -93,7 +89,6 @@ const MainScreen = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <ListGenres/>
         </section>
-
         <Footer/>
       </div>
     </>
