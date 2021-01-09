@@ -6,7 +6,7 @@ export const initApplication = () => (dispatch) => {
     dispatch(fetchPromoFilm()),
     dispatch(fetchFilmList())
   ]).then(() => {
-    // dispatch(checkAuth());
+    dispatch(checkAuth());
     dispatch(setApplicationReady());
   });
 };
